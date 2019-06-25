@@ -9,21 +9,21 @@ MadComerz Blog is an open source blog system powered by laravel 5.8
 
 ## Installation Instruction
 
-    - Clone the repo
-    - Run `composer install`
-    - Run `copy('.env.example', '.env')`
-    - Run `php artisan migrate --seed`
+    * Clone the repo
+    * Run `composer install`
+    * Run `copy('.env.example', '.env')`
+    * Run `php artisan migrate --seed`
 
 ## Contribution Guideline
 
-    - Fork The repo 
-    - Clone the repo locally
-    - Run `git checkout dev`
-    - Create a new local branch
-    - Woek on your local branch
-    - Push to remote
-    - When work is tested,done or ready, push to remote
-    - Merge to dev
+    * Fork The repo 
+    * Clone the repo locally
+    * Run `git checkout dev`
+    * Create a new local branch
+    * Woek on your local branch
+    * Push to remote
+    * When work is tested,done or ready, push to remote
+    * Merge to dev
 
 ## License
 
