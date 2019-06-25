@@ -1,7 +1,7 @@
 ## Laravel Complete Blog Project
 
 
-MadComerz Blog is an open source blog platform management system using Laravel.
+MadComerz Blog is an open source blog system powered by laravel 5.8
 
 ##All Features
 
