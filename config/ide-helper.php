@@ -13,7 +13,7 @@ return array(
 
     'filename'  => '_ide_helper',
     'format'    => 'php',
-    
+
     'meta_filename' => '.phpstorm.meta.php',
 
     /*
@@ -66,7 +66,7 @@ return array(
     'include_helpers' => true,
 
     'helper_files' => array(
-        base_path().'/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
+        base_path() . '/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
     ),
 
     /*
@@ -80,7 +80,7 @@ return array(
     */
 
     'model_locations' => array(
-        'app',
+        'app/Models',
     ),
 
 
@@ -121,9 +121,7 @@ return array(
     |
     */
 
-    'interfaces' => array(
-
-    ),
+    'interfaces' => array(),
 
     /*
     |--------------------------------------------------------------------------
@@ -151,9 +149,7 @@ return array(
     |  ),
     |
     */
-    'custom_db_types' => array(
-
-    ),
+    'custom_db_types' => array(),
 
     /*
      |--------------------------------------------------------------------------
@@ -189,10 +185,10 @@ return array(
     | Cast the given "real type" to the given "type".
     |
     */
-   'type_overrides' => array(
+    'type_overrides' => array(
         'integer' => 'int',
         'boolean' => 'bool',
-   ),
+    ),
 
     /*
     |--------------------------------------------------------------------------
