@@ -8,6 +8,7 @@ class Tag extends Model
 {
     protected $fillable = ['tag_name'];
 
+    public $timestamps = false;
     /**
      * The tags that belong to the posts.
      */

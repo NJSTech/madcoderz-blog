@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Post extends Model
 {
-    use SoftDeletingTrait;
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -30,7 +30,7 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Model\Tag', 'post_tag');
+        return $this->belongsToMany('App\Model\Tag', 'post_tag')->withPivot('post_tag');
     }
     // the post belong to category
     public function category()
