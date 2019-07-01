@@ -5,6 +5,7 @@
 use App\Models\Admin;
 use Faker\Generator as Faker;
 use Carbon\Carbon;
+use App\Models\Profile;
 
 $factory->define(Admin::class, function (Faker $faker) {
     return [
@@ -12,7 +13,18 @@ $factory->define(Admin::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => Carbon::now(),
         'password' => bcrypt('abc123'), // password
-        'job_title' => 'Author',
+        'job_title' => $faker->jobTitle,
         'remember_token' => Str::random(10),
+    ];
+});
+$factory->define(Profile::class, function (Faker $faker) {
+    return [
+        'userable_type' => 'Admin',
+        'userable_id' => function () {
+            return factory('App\Models\Admin')->create()->id;
+        },
+        'about' => $faker->paragraph,
+        'facebook' => 'www.facebook.com/madcoderz',
+        'twitter' => 'www.twitter.com/madCoderz',
     ];
 });

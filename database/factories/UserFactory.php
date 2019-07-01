@@ -1,10 +1,12 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Models\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use Illuminate\Support\Carbon;
+use App\Models\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +26,17 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => Carbon::now(),
         'password' => bcrypt('abc123'), // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->define(Profile::class, function (Faker $faker) {
+    return [
+        'userable_type' => 'User',
+        'userable_id' => function () {
+            return factory('App\Models\User')->create()->id;
+        },
+        'about' => $faker->paragraph,
+        'facebook' => 'www.facebook.com/madcoderz',
+        'twitter' => 'www.twitter.com/madCoderz',
     ];
 });

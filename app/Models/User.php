@@ -42,6 +42,6 @@ class User extends Authenticatable implements MustVerifyEmail
     // Get the profile value for user
     public function profile()
     {
-        return $this->morphOne('App\Model\Profile', 'profileable');
+        return $this->morphOne('App\Models\Profile', 'profileable');
     }
 }

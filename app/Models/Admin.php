@@ -41,6 +41,6 @@ class Admin extends Authenticatable implements MustVerifyEmail
     // Get the profile value for admin
     public function profile()
     {
-        return $this->morphOne('App\Model\Profile', 'profileable');
+        return $this->morphOne('App\Models\Profile', 'profileable');
     }
 }
