@@ -18,6 +18,13 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($post) {
+            $post->slug = str_slug($post->title);
+        });
+    }
     /**
      * Get all of the owning postable models.
      */
@@ -25,12 +32,13 @@ class Post extends Model
     {
         return $this->morphTo();
     }
+
     /**
      * The post that belong to the tags.
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Model\Tag', 'post_tag')->withPivot('post_tag');
+        return $this->belongsToMany('App\Models\Tag', 'post_tag')->withPivot('post_tag');
     }
     // the post belong to category
     public function category()
