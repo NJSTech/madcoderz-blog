@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\AdminResetPasswordNotification;
 
 class Admin extends Authenticatable implements MustVerifyEmail
 {
@@ -42,5 +43,15 @@ class Admin extends Authenticatable implements MustVerifyEmail
     public function profile()
     {
         return $this->morphOne('App\Models\Profile', 'profileable');
+    }
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPasswordNotification($token));
     }
 }
