@@ -1866,3 +1866,95 @@
      color: #fff;
      text-transform: capitalize;
  }
+ /* login form */
+ .wrapper-login {
+    background-image: url(../images/bg.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 450px
+}
+
+.login-form {
+    max-width: 380px;
+    margin: 12% auto;
+    background-color: #f8f8f8
+}
+
+.login-form .main-logo img {
+    height: 50px;
+    width: 130px
+}
+
+.login-form p {
+    font-size: 1rem
+}
+
+.login-form .card {
+    border: none;
+    box-shadow: 0 -3px 31px 0 rgba(3, 22, 245, .04), 0 6px 20px 0 rgba(0, 123, 255, .05);
+    margin-bottom: 1.875rem;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.login-form .card .custom-control-label {
+    font-size: 13px;
+    padding-top: 2px
+}
+
+.login-form .card .text-forgot {
+    font-size: 13px
+}
+
+.login-form .card .socials .fa {
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 50%
+}
+
+.login-form .card .socials .fb-md {
+    background: #3B5998;
+    color: #fff
+}
+
+.login-form .card .socials .tw-md {
+    background: #55ACEE;
+    color: #fff
+}
+
+.login-form .card .socials .gplus-md {
+    background: #dd4b39;
+    color: #fff
+}
+
+.login-form .card .socials .li-md {
+    background: #007bb5;
+    color: #fff
+}
+
+.login-form .card .text-signup {
+    font-size: 13px
+}
+/* custom buttom */
+.btn-custom,
+.btn-custom:hover {
+    color: #fff;
+    background-color: #64afff;
+    border-color: #64afff
+}
+
+.btn-custom {
+    border-radius: 0 !important;
+    box-shadow: 0 14px 26px -12px rgba(96, 125, 139, .06), 0 4px 23px 0 rgba(0, 0, 0, .05), 0 8px 10px -5px rgba(96, 125, 139, .06)
+}
+
+.btn-custom:hover {
+    transition: all .5s;
+    border-radius: 3px;
+    box-shadow: 0 14px 26px -12px rgba(62, 130, 247, .36), 0 4px 23px 0 rgba(62, 130, 247, .36), 0 8px 10px -5px rgba(62, 130, 247, .36)
+}
+.btn-fullwidth {
+    width: 100%
+}
