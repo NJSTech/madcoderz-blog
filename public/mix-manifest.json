@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js?id=7c36365cb5827aed97a8",
     "/css/app.css": "/css/app.css?id=967ca48a54e34d21ffa3",
     "/css/custom.css": "/css/custom.css?id=d41d8cd98f00b204e980"
+=======
+    "/js/app.js": "/js/app.js?id=ffaaf0c01330309f9545",
+    "/css/app.css": "/css/app.css?id=e91d5cd13e1e020540bf",
+    "/css/custom.css": "/css/custom.css?id=fb326dca1f97279159c0"
+>>>>>>> nj-dev
 }
