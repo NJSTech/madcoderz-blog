@@ -11,10 +11,10 @@
             </div>
             <p class="text-center text-muted mb-3">Reset Password</p>
             @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <div class="form-group">
