@@ -6,10 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\AdminResetPasswordNotification;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Admin extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
 {
-    use Notifiable;
+    use Notifiable, HasMediaTrait;
     /**
      * The attributes that are mass assignable.
      *
