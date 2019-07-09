@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $avatars = auth()->user()->getMedia('profile')->first();
+        return view('home', compact('avatars'));
+    }
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $user->addMedia($request->avatar)->toMediaCollection('profile');
+        return redirect()->back();
     }
 }

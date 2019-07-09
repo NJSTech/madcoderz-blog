@@ -24,6 +24,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $avatars = auth()->user()->getMedia('profile')->first();
+        return view('admin.dashboard', compact('avatars'));
+    }
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $user->addMedia($request->avatar)->toMediaCollection('profile');
+        return redirect()->back();
     }
 }

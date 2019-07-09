@@ -12,6 +12,17 @@ const mix = require('laravel-mix');
  */
 
 mix.sass('resources/sass/app.scss', 'public/css/app.css')
-      .styles('resources/sass/custom.css', 'public/css/custom.css')
-      .js('resources/js/app.js','public/js/app.js')
-      .version();
+      .combine([
+            'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
+            'node_modules/owl.carousel/dist/assets/owl.theme.default.min.css'
+      ],'public/css/all.css')
+       .styles('resources/sass/custom.css', 'public/css/custom.css')
+       .js('resources/js/app.js','public/js/app.js')
+      .js([
+            'node_modules/owl.carousel/dist/owl.carousel.min.js', 
+            'node_modules/imagesloaded/imagesloaded.pkgd.js' 
+      ],'public/js/all.js')
+      .js([
+            'resources/js/custom.js',
+            'resources/js/home.js'
+      ],'public/js/custom.js');

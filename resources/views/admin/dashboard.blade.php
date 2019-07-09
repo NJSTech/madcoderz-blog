@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged as Admin!
+                    <form method="POST" action="{{ route('admin.fileUpload') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="avatar" id="customFile">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <input type="submit" name="submit">
+                      </form>
+                      <img src="{{ $avatars->getUrl() }}" alt="">
                 </div>
             </div>
         </div>
