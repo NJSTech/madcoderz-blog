@@ -1,5 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=ffaaf0c01330309f9545",
-    "/css/app.css": "/css/app.css?id=e91d5cd13e1e020540bf",
-    "/css/custom.css": "/css/custom.css?id=fb326dca1f97279159c0"
+    "/js/all.js": "/js/all.js",
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/custom.js": "/js/custom.js",
+    "/css/all.css": "/css/all.css",
+    "/css/custom.css": "/css/custom.css"
 }
