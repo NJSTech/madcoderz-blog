@@ -10,19 +10,19 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
 
 <body class="wrapper-login">
-    <div class="container">
-        <div id="app">
+
             @yield('content')
-        </div>
-    </div>
     <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/all.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
     <!--Plugin-->
 
 </body>

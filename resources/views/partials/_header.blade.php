@@ -19,7 +19,7 @@
 							<a class="nav-link" href="#">Contact Us</a>
 						</li>		
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="icon-login"></i> Login</a>
+							<a class="nav-link" href="{{ route('login') }}"><i class="icon-login"></i> Login</a>
 						</li>		
 						<li class="nav-item">
 							<a class="nav-link" href="#"><i class="icon-note"></i> Register</a>
