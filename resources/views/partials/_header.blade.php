@@ -1,12 +1,12 @@
 <header>
 			<nav class="navbar navbar-dark">
 				<div class="container">
-					<a class="navbar-brand" href="">
+					<a class="navbar-brand" href="{{ url('/') }}">
 						<h5>Blog</h5>
 					</a>
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="#">Home</a>
+						<a class="nav-link" href="{{ url('/') }}">Home</a>
 						</li>
 						<!-- dropdown link 2 -->
 						<li class="nav-item">
