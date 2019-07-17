@@ -4,7 +4,7 @@
                     <!--navbar Logo section left-->
                     <div class="topbar-left">
                         <div class="main-logo m-0 p-0">
-                            <a href="index.html" class="logo">
+                            <a href="{{ route('admin.dashboard') }}" class="logo">
                                 <span>
                                     <img src="http://www.madcoderz.com/madol/asset/images/logo-color.svg" alt="madol">
                                 </span>

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,5 +32,12 @@ Route::prefix('admin')->group(function () {
     Route::post('password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
     Route::get('password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
-Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::prefix('categories')->group(function () {
+        Route::get('/', 'Admins\CategoryController@index')->name('categories.index');
+        Route::post('/', 'Admins\CategoryController@store')->name('categories.store');
+    });
+    Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
+});
+
 Route::post('/store', 'Admins\AdminController@store')->name('admin.fileUpload');
