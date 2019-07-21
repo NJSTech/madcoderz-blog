@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileUnacceptableForCollection;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +47,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof FileUnacceptableForCollection) {
+            return redirect()->back()->with('error', 'Only JPEG and PNG file type accepted');
+        }
         return parent::render($request, $exception);
     }
     protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)

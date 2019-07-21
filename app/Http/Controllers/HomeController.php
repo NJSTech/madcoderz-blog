@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,8 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $avatars = auth()->user()->getMedia('profile')->first();
-        return view('home', compact('avatars'));
+        // $avatars = auth()->user()->getMedia('profile')->first();
+        $categories = Category::all();
+        return view('home', compact('categories'));
     }
     public function store(Request $request)
     {
