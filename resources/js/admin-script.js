@@ -1,7 +1,7 @@
 $(function() {
     "use strict";
     $(function() {
-        $("#menu").metisMenu()
+        $("#menu").metisMenu();
     }), $(".scroolbar-notification").slimScroll({
         height: "300px",
         color: "rgb(236, 230, 230)",

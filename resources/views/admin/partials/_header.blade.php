@@ -60,14 +60,14 @@
                             </li>
                             <li class="dropdown nav-profile hw35 pr-3">
                                 <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link arrow-none">
-                                    <img src="http://www.madcoderz.com/madol/asset/images/user/thumb/default-thumb.jpg" alt="" class="list-thumbnail rounded-circle">
+                                <img src="" alt="" class="list-thumbnail rounded-circle">
                                 </a>
                                 <div class="dropdown-menu hw45 dropdown-box-grid">
                                     <ul class="dropdown-inner p-2">
                                         <li class="pb-3">
                                             <div class="dd-userbox d-flex flex-row">
                                                 <div class="dd-img">
-                                                    <img alt="madol" src="http://www.madcoderz.com/madol/asset/images/user/thumb/default-thumb.jpg" class="rounded-circle">
+                                                    <img alt="madol" src="" class="rounded-circle">
                                                 </div>
                                                 <div class="dd-info">
                                                     <h4>Vesa J Helenius</h4>

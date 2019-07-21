@@ -53,4 +53,9 @@ class Post extends Model implements HasMedia
     {
         return $this->hasMany('App\Models\Comment');
     }
+    // set post path
+    public function path()
+    {
+        return '/posts/' . $this->slug;
+    }
 }

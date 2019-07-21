@@ -9,13 +9,13 @@
                         <h5 class="text-center text-medium">Vesa J Helenius</h5>
                     </div>
                     <ul class="metismenu" id="menu">
-                        <li class="active">
-                        <a class="active" href="{{ route('admin.dashboard') }}" aria-expanded="false">
+                        <li {{ (Request::is('*dashboard') ? 'class=active' : '') }}>
+                        <a class="" href="{{ route('admin.dashboard') }}" aria-expanded="false">
                                 <i class="icon-grid"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="">
+                        <li {{ (Request::is('*categories') ? 'class=active' : '') }}>
                         <a class="" href="{{ route('categories.index') }}" aria-expanded="false">
                                 <i class="icon-notebook"></i>
                                 <span>Category</span>

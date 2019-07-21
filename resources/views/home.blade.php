@@ -48,36 +48,19 @@
 		<div class="section no-padding-bottom">
 			<div class="container">
 				<div class="row col-spacing-20">
+					@foreach ($categories as $category)
+						
 					<div class="col-12 col-md-4">
 						<div class="hoverbox-8">
-							<a href="#">
-								<img src="/img/product-2.jpg" alt="">
+						<a href="{{ $category->category_path() }}">
+								<img src="{{ $category->getFirstMediaUrl('category','thumb') }}" alt="">
 								<div class="content">
-									<h6 class="heading-uppercase no-margin">Fashion</h6>
+								<h6 class="heading-uppercase no-margin">{{ $category->category_name }}</h6>
 								</div>
 							</a>
 						</div>
 					</div>
-					<div class="col-12 col-md-4">
-						<div class="hoverbox-8">
-							<a href="#">
-								<img src="/img/product-2.jpg" alt="">
-								<div class="content">
-									<h6 class="heading-uppercase no-margin">Lifestyle</h6>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-12 col-md-4">
-						<div class="hoverbox-8">
-							<a href="#">
-								<img src="/img/product-2.jpg" alt="">
-								<div class="content">
-									<h6 class="heading-uppercase no-margin">Travel</h6>
-								</div>
-							</a>
-						</div>
-					</div>
+					@endforeach
 				</div><!-- end row -->
 			</div><!-- end container -->
 		</div>

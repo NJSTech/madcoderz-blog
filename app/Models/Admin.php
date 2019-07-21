@@ -56,4 +56,8 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         $this->notify(new AdminResetPasswordNotification($token));
     }
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('profile');
+    }
 }
