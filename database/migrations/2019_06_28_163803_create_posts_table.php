@@ -19,12 +19,12 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->longText('body');
             $table->unsignedInteger('category_id');
-            $table->unsignedBigInteger('userable_id');
-            $table->string('userable_type');
+            $table->unsignedBigInteger('author_id');
             $table->tinyInteger('status')->default(0)->comment('0 => Unpublished, 1 => Published');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('admins')->onDelete('cascade');
         });
     }
 

@@ -15,11 +15,27 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li {{ (Request::is('*categories') ? 'class=active' : '') }}>
+                        <li {{ (Request::is('*categories*') ? 'class=active' : '') }}>
                         <a class="" href="{{ route('categories.index') }}" aria-expanded="false">
                                 <i class="icon-notebook"></i>
                                 <span>Category</span>
                             </a>
+                        </li>
+                        <li {{ (Request::is('*tags*') ? 'class=active' : '') }}>
+                        <a class="" href="{{ route('tags.index') }}" aria-expanded="false">
+                                <i class="icon-pin"></i>
+                                <span>Tag</span>
+                            </a>
+                        </li>
+                        <li {{ (Request::is('*posts*') ? 'class=active' : '') }}>
+                            <a class="" href="{{ route('posts.index') }}" aria-expanded="false">
+                                <i class="icon-note"></i>
+                                <span>Pots</span>
+                            </a>
+                            <ul aria-expanded="false" class="submenu collapse">
+                                <li><a href="{{ route('posts.index') }}">Posts</a></li>
+                                <li><a href="{{ route('posts.create') }}">Create Post</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

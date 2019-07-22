@@ -13,9 +13,8 @@ $factory->define(Post::class, function (Faker $faker) {
             return factory('App\Models\Category')->create()->id;
         },
         "status" => 1,
-        'userable_type' => 'User',
-        'userable_id' => function () {
-            return factory('App\Models\User')->create()->id;
+        'author_id' => function () {
+            return factory('App\Models\Admin')->create()->id;
         },
     ];
 });

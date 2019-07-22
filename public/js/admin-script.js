@@ -199,7 +199,9 @@ $(function () {
           url: url,
           // data: {id:id},
           success: function success(data) {
-            console.log(data);
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
           }
         });
       }
@@ -227,16 +229,59 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/tag.js":
+/*!*****************************!*\
+  !*** ./resources/js/tag.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  "use strict";
+
+  $(document).on('click', '.tag-destroy', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var url = 'tags/destroy/' + id;
+    Swal.fire({
+      title: 'Are you sure?',
+      // text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        $.ajax({
+          type: "GET",
+          url: url,
+          // data: {id:id},
+          success: function success(data) {
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        });
+      }
+    });
+  });
+});
+
+/***/ }),
+
 /***/ 3:
-/*!***************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ***!
-  \***************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-script.js */"./resources/js/admin-script.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
 
 
 /***/ })

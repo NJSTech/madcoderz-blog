@@ -39,7 +39,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     // admin posts
     public function posts()
     {
-        return $this->morphMany('App\Models\Post', 'postable');
+        return $this->hasMany(App\Models\Post::class);
     }
     // Get the profile value for admin
     public function profile()

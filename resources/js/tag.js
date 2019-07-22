@@ -1,9 +1,9 @@
 $(function(){
     "use strict";
-    $(document).on('click', '.category-destroy', function (e) {
+    $(document).on('click', '.tag-destroy', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var url = 'categories/destroy/'+id;
+        var url = 'tags/destroy/'+id;
         Swal.fire({
             title: 'Are you sure?',
             // text: "You won't be able to revert this!",
@@ -18,17 +18,17 @@ $(function(){
               Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',
-                'success'
+                'success',
               )
               $.ajax({
-                type: "get",
+                type: "GET",
                 url: url,
                 // data: {id:id},
                 success: function (data) {
-                  setTimeout(function(){
-                    location.reload();
-                },2000);
-                    }         
+                    setTimeout(function(){
+                        location.reload();
+                    },2000);
+                }         
             });
             }
           })

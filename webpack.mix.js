@@ -35,5 +35,6 @@ mix.sass('resources/sass/app.scss', 'public/css/app.css')
       .js([
             'resources/js/admin-script.js',
             'resources/js/dashboard.js',
-            'resources/js/category.js'
+            'resources/js/category.js',
+            'resources/js/tag.js',
       ],'public/js/admin-script.js');
