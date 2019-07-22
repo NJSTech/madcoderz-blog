@@ -24,7 +24,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' => "required|min:2",
+            'category_name' => "required|min:2|unique:categories,category_name," . $this->category->id,
             'image' => "mimes:jpeg,png",
         ];
     }
