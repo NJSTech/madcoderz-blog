@@ -199,7 +199,9 @@ $(function () {
           url: url,
           // data: {id:id},
           success: function success(data) {
-            console.log(data);
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
           }
         });
       }
@@ -234,7 +236,42 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\tag.js'");
+=======
+$(function () {
+  "use strict";
+
+  $(document).on('click', '.tag-destroy', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var url = 'tags/destroy/' + id;
+    Swal.fire({
+      title: 'Are you sure?',
+      // text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        $.ajax({
+          type: "GET",
+          url: url,
+          // data: {id:id},
+          success: function success(data) {
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        });
+      }
+    });
+  });
+});
+>>>>>>> nj-dev
 
 /***/ }),
 

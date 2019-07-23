@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admins;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Http\Requests\CategoryCreateRequest;
-use App\Http\Requests\CategoryUpdateRequest;
+use App\Models\Tag;
+use App\Http\Requests\TagCreateRequest;
+use App\Http\Requests\TagsUpdateRequest;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     public function __construct()
     {
@@ -21,8 +21,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
-        return view('admin.category', compact('categories'));
+        $tags = Tag::paginate();
+        return view('admin.tags', compact('tags'));
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category-create');
+        // return view('admin.tag-create');
     }
 
     /**
@@ -41,10 +41,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreateRequest $request)
+    public function store(TagCreateRequest $request)
     {
-        $category = Category::create($request->all());
-        $category->addMedia($request->image)->toMediaCollection('category');
+        Tag::create($request->all());
         return redirect()->back()->with('status', 'Successfully Created');
     }
 
@@ -55,9 +54,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+    { }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,9 +62,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Tag $tag)
     {
-        return view('admin.category-update', compact('category'));
+        return view('admin.tags-update', compact('tag'));
     }
 
     /**
@@ -77,13 +74,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Category $category, CategoryUpdateRequest $request)
+    public function update(TagsUpdateRequest $request, Tag $tag)
     {
-        $category->update($request->all());
-        if ($request->hasFile('image')) {
-            $category->media()->delete();
-            $category->addMediaFromRequest('image')->toMediaCollection('category');
-        }
+        $tag->update($request->all());
         return redirect()->back()->with('status', 'Successfully Updated');
     }
 
@@ -93,8 +86,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Tag $tag)
     {
-        $category->delete();
+        $tag->delete();
     }
 }

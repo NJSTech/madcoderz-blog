@@ -15,7 +15,7 @@ class Post extends Model implements HasMedia
      *
      * @var array
      */
-    protected $fillable = ['title', 'slug', 'body', 'category_id', 'userable_id', 'userable_type', 'status'];
+    protected $fillable = ['title', 'slug', 'body', 'category_id', 'author_id', 'status'];
 
     protected $dates = ['deleted_at'];
 
@@ -44,7 +44,7 @@ class Post extends Model implements HasMedia
     // the post belong to category
     public function category()
     {
-        return $this->belongsTo('App\Model\Category');
+        return $this->belongsTo(Category::class);
     }
     /**
      * Get all of the post's comments.
@@ -57,5 +57,10 @@ class Post extends Model implements HasMedia
     public function path()
     {
         return '/posts/' . $this->slug;
+    }
+    // set post created by
+    public function author()
+    {
+        return $this->belongsTo(Admin::class, 'author_id');
     }
 }

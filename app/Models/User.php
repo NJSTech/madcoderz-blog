@@ -36,11 +36,6 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    // user posts
-    public function posts()
-    {
-        return $this->morphMany('App\Models\Post', 'postable');
-    }
     // Get the profile value for user
     public function profile()
     {

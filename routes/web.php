@@ -42,6 +42,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
         Route::put('/{category}', 'Admins\CategoryController@update')->name('categories.update');
         Route::get('destroy/{category}', 'Admins\CategoryController@destroy')->name('categories.destroy');
     });
+    Route::prefix('tags')->group(function () {
+        Route::get('/', 'Admins\TagController@index')->name('tags.index');
+        // Route::get('/create', 'Admins\TagController@create')->name('tags.create');
+        Route::post('/', 'Admins\TagController@store')->name('tags.store');
+        Route::get('/{tag}/edit', 'Admins\TagController@edit')->name('tags.edit');
+        Route::put('/{tag}', 'Admins\TagController@update')->name('tags.update');
+        Route::get('destroy/{tag}', 'Admins\TagController@destroy')->name('tags.destroy');
+    });
+    Route::prefix('posts')->group(function () {
+        Route::get('/', 'Admins\PostController@index')->name('posts.index');
+        Route::get('/create', 'Admins\PostController@create')->name('posts.create');
+        Route::post('/', 'Admins\PostController@store')->name('posts.store');
+        Route::get('/{tag}/edit', 'Admins\PostController@edit')->name('posts.edit');
+        Route::put('/{tag}', 'Admins\PostController@update')->name('posts.update');
+        Route::get('destroy/{tag}', 'Admins\PostController@destroy')->name('posts.destroy');
+    });
     Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
 });
 

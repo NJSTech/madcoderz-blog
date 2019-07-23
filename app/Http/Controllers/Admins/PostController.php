@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admins;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Http\Requests\CategoryCreateRequest;
-use App\Http\Requests\CategoryUpdateRequest;
+use App\Models\Post;
 
-class CategoryController extends Controller
+class PostController extends Controller
 {
     public function __construct()
     {
@@ -21,8 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
-        return view('admin.category', compact('categories'));
+        $posts = Post::with('author', 'category')->select()->paginate(10);
+        return view('admin.posts', compact('posts'));
     }
 
     /**
@@ -32,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category-create');
+        return view('admin.posts');
     }
 
     /**
@@ -41,11 +39,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreateRequest $request)
+    public function store(Request $request)
     {
-        $category = Category::create($request->all());
-        $category->addMedia($request->image)->toMediaCollection('category');
-        return redirect()->back()->with('status', 'Successfully Created');
+        return view('admin.posts');
     }
 
     /**
@@ -56,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.posts');
     }
 
     /**
@@ -65,9 +61,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        return view('admin.category-update', compact('category'));
+        //
     }
 
     /**
@@ -77,14 +73,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Category $category, CategoryUpdateRequest $request)
+    public function update(Request $request, $id)
     {
-        $category->update($request->all());
-        if ($request->hasFile('image')) {
-            $category->media()->delete();
-            $category->addMediaFromRequest('image')->toMediaCollection('category');
-        }
-        return redirect()->back()->with('status', 'Successfully Updated');
+        //
     }
 
     /**
@@ -93,8 +84,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
+        //
     }
 }
