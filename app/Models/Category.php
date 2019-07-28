@@ -44,6 +44,6 @@ class Category extends Model implements HasMedia
             ->height(300);
         $this->addMediaConversion('banner')
             ->width(1200)
-            ->height(750);
+            ->height(650);
     }
 }

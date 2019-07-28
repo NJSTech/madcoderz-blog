@@ -29,6 +29,7 @@
         "jquery-slimscroll": "^1.3.8",
         "metismenu": "^3.0.4",
         "owl.carousel": "^2.3.4",
+        "select2": "^4.0.8",
         "sweetalert2": "^8.14.0"
     }
 }

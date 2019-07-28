@@ -9,14 +9,16 @@ $(function() {
         borderRadius: 0,
         size: "5px",
         alwaysVisible: !0
-    }), $(".table-body").slimScroll({
-        height: "460px",
-        color: "rgb(236, 230, 230)",
-        disableFadeOut: !0,
-        borderRadius: 0,
-        size: "5px",
-        alwaysVisible: !0
-    }), $(".quicknote").slimScroll({
+    }), 
+    // $(".table-body").slimScroll({
+    //     height: "460px",
+    //     color: "rgb(236, 230, 230)",
+    //     disableFadeOut: !0,
+    //     borderRadius: 0,
+    //     size: "5px",
+    //     alwaysVisible: !0
+    // }),
+    $(".quicknote").slimScroll({
         height: "350px",
         color: "rgb(236, 230, 230)",
         disableFadeOut: !0,

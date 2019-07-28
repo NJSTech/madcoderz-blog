@@ -105,14 +105,15 @@ $(function () {
     borderRadius: 0,
     size: "5px",
     alwaysVisible: !0
-  }), $(".table-body").slimScroll({
-    height: "460px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "5px",
-    alwaysVisible: !0
-  }), $(".quicknote").slimScroll({
+  }), // $(".table-body").slimScroll({
+  //     height: "460px",
+  //     color: "rgb(236, 230, 230)",
+  //     disableFadeOut: !0,
+  //     borderRadius: 0,
+  //     size: "5px",
+  //     alwaysVisible: !0
+  // }),
+  $(".quicknote").slimScroll({
     height: "350px",
     color: "rgb(236, 230, 230)",
     disableFadeOut: !0,
@@ -229,6 +230,45 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/post-destroy.js":
+/*!**************************************!*\
+  !*** ./resources/js/post-destroy.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('#tag-multiple').select2();
+$(document).on('click', '.post-destroy', function (e) {
+  e.preventDefault();
+  var id = $(this).data('id');
+  var url = 'posts/destroy/' + id;
+  Swal.fire({
+    title: 'Are you sure?',
+    // text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      $.ajax({
+        type: "GET",
+        url: url,
+        // data: {id:id},
+        success: function success(response) {
+          if (response.status == 'success') {
+            $(".flashmessage").fadeIn('fast').delay(3000).fadeOut('fast').text(response.message);
+          }
+        }
+      });
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/tag.js":
 /*!*****************************!*\
   !*** ./resources/js/tag.js ***!
@@ -272,16 +312,17 @@ $(function () {
 /***/ }),
 
 /***/ 3:
-/*!*************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ***!
-  \*************************************************************************************************************************/
+/*!********************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ***!
+  \********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-script.js */"./resources/js/admin-script.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
 
 
 /***/ })

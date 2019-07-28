@@ -29,17 +29,17 @@ class Post extends Model implements HasMedia
     /**
      * Get all of the owning postable models.
      */
-    public function postable()
-    {
-        return $this->morphTo();
-    }
+    // public function postable()
+    // {
+    //     return $this->morphTo();
+    // }
 
     /**
      * The post that belong to the tags.
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag', 'post_tag')->withPivot('post_tag');
+        return $this->belongsToMany('App\Models\Tag', 'post_tag');
     }
     // the post belong to category
     public function category()
@@ -62,5 +62,16 @@ class Post extends Model implements HasMedia
     public function author()
     {
         return $this->belongsTo(Admin::class, 'author_id');
+    }
+    // register media collection
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('post');
+        $this->addMediaConversion('thumb')
+            ->width(300)
+            ->height(300);
+        $this->addMediaConversion('banner')
+            ->width(1200)
+            ->height(650);
     }
 }

@@ -28,6 +28,8 @@ class MorphMapServiceProvider extends ServiceProvider
             'User' => \App\Models\User::class,
             'Admin' => \App\Models\Admin::class,
             'Category' => \App\Models\Category::class,
+            'Post' => \App\Models\Post::class,
+            'Profile' => \App\Models\Profile::class,
         ]);
     }
 }

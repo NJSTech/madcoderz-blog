@@ -54,11 +54,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
         Route::get('/', 'Admins\PostController@index')->name('posts.index');
         Route::get('/create', 'Admins\PostController@create')->name('posts.create');
         Route::post('/', 'Admins\PostController@store')->name('posts.store');
-        Route::get('/{tag}/edit', 'Admins\PostController@edit')->name('posts.edit');
-        Route::put('/{tag}', 'Admins\PostController@update')->name('posts.update');
-        Route::get('destroy/{tag}', 'Admins\PostController@destroy')->name('posts.destroy');
+        Route::get('/{post}/edit', 'Admins\PostController@edit')->name('posts.edit');
+        Route::put('/{post}', 'Admins\PostController@update')->name('posts.update');
+        Route::get('destroy/{post}', 'Admins\PostController@destroy')->name('posts.destroy');
     });
     Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
+    Route::get('/{admin}/edit', 'Admins\AdminController@edit')->name('admin.profile');
+    Route::put('/{admin}', 'Admins\AdminController@update')->name('admin.update');
+    Route::put('/{profile}/update', 'Admins\AdminController@profileUpdate')->name('admin.profile.update');
+    Route::get('/passwordChange', 'Admins\AdminController@changePassword')->name('admin.change.password');
+    Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request');
 });
 
-Route::post('/store', 'Admins\AdminController@store')->name('admin.fileUpload');
+Route::prefix('posts')->group(function () { });
