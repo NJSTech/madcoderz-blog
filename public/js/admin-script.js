@@ -229,6 +229,17 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/post-destroy.js":
+/*!**************************************!*\
+  !*** ./resources/js/post-destroy.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\post-destroy.js'");
+
+/***/ }),
+
 /***/ "./resources/js/tag.js":
 /*!*****************************!*\
   !*** ./resources/js/tag.js ***!
@@ -236,9 +247,6 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\tag.js'");
-=======
 $(function () {
   "use strict";
 
@@ -271,21 +279,21 @@ $(function () {
     });
   });
 });
->>>>>>> nj-dev
 
 /***/ }),
 
 /***/ 3:
-/*!*************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ***!
-  \*************************************************************************************************************************/
+/*!********************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ***!
+  \********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-script.js */"./resources/js/admin-script.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
 
 
 /***/ })
