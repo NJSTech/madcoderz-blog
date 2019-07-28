@@ -32,3 +32,7 @@
 				</div><!-- end container -->
 			</nav>
 		</header>
+		<div class="scrolltotop">
+			<a class="button-circle button-circle-sm button-circle-dark" href="#"><i class="icon-arrow-up"></i></a>
+		</div>
+			<!-- end Scroll to top button -->

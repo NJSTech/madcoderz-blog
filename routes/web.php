@@ -66,4 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request');
 });
 
-Route::prefix('posts')->group(function () { });
+Route::prefix('posts')->group(function () {
+    Route::get('/', 'PostController@index')->name('posts.index');
+    Route::get('/{post}', 'PostController@show')->name('posts.show');
+});

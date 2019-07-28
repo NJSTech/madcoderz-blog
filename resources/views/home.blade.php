@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="scrolltotop">
-			<a class="button-circle button-circle-sm button-circle-dark" href="#"><i class="icon-arrow-up"></i></a>
-		</div>
-		<!-- end Scroll to top button -->
 
 		<!-- Fullscreen Search Form -->
 		<div class="search-wrapper">
@@ -109,8 +105,8 @@
 							<h6 class="heading-uppercase">Categories</h6>
 							<ul class="list-category">
 								@foreach ($categories as $category)
-							<li><a href="#">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
-								@endforeach;
+									<li><a href="{{ $category->category_path() }}">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
+								@endforeach
 							</ul>
 						</div>
 						<!-- Sidebar box 2 - Popular Posts -->
