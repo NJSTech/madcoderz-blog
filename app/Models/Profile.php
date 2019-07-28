@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $fillable = ['title', 'slug', 'body', 'category_id', 'userable_id', 'userable_type', 'status'];
+    protected $fillable = ['about', 'facebook', 'twitter', 'userable_id', 'userable_type'];
 
     /**
      * Get all of the owning profileable models.

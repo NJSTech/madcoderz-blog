@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Admins;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
+use Auth;
+use App\Models\Category;
+use App\Models\Tag;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -19,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('author', 'category')->select()->paginate(10);
+        $posts = Post::with('author', 'category')->select()->orderBy('id', 'desc')->paginate(15);
         return view('admin.posts', compact('posts'));
     }
 
@@ -30,7 +36,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post-create', compact('categories', 'tags'));
     }
 
     /**
@@ -39,9 +47,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        return view('admin.posts');
+        $request->merge([
+            'body' => Purifier::clean($request->get('body')),
+            'author_id' => Auth::guard('admin')->user()->id,
+        ]);
+        $post = Post::create($request->all());
+        $post->addMedia($request->image)->toMediaCollection('post');
+        $post->tags()->sync((array) $request->input('tags'));
+        return redirect()->back()->with('status', 'Successfully Created');
     }
 
     /**
@@ -61,9 +76,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post-update', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -73,9 +90,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Post $post, PostUpdateRequest $request)
     {
-        //
+        $request->merge([
+            'body' => Purifier::clean($request->get('body'))
+        ]);
+        $post->update($request->all());
+        if ($request->hasFile('image')) {
+            $post->media()->delete();
+            $post->addMediaFromRequest('image')->toMediaCollection('post');
+        }
+        $post->tags()->sync((array) $request->input('tags'));
+        return redirect()->back()->with('status', 'Successfully Updated');
     }
 
     /**
@@ -84,8 +110,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->json([
+            'message' => 'Successfully Deleted',
+            'status' => 'success'
+        ]);
     }
 }

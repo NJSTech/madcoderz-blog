@@ -1,5 +1,7 @@
 @extends('admin.layouts.master')
+@push('scripts')
 
+@endpush
 @section('content')
 <div class="page-content">
                     <!--Page title-->
@@ -8,7 +10,7 @@
                         <p class="mb-0"><a href="javascript:void(0)">Home</a> | <span>Post</span></p>
                     </div>
                     <!--end page title-->
-                    
+                    <div class="flashmessage"></div>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
                             <div class="card ">
@@ -32,12 +34,12 @@
                                                     @foreach ($posts as $post)
                                                         <tr>
                                                             <td>{{ $post->title }}</td>                                                       
-                                                            <td><img src="" alt="{{ $post->title }}"></td> 
+                                                        <td><img src="{{ $post->getFirstMediaUrl('post','thumb') }}" alt="{{ $post->title }}"></td> 
                                                             <td>{{ $post->category->category_name }}</td>                                                      
                                                             <td>{{ $post->author->name }}</td>                                                      
                                                             <td class="action-buttons">
                                                             <a href="{{ route('posts.edit',$post->id) }}" class=""><i class="icon-pencil"></i></a>
-                                                            <a href="" class="tag-destroy" data-id="{{ $post->id }}"><i class="icon-trash"></i></a>
+                                                            <a href="" class="post-destroy" data-id="{{ $post->id }}"><i class="icon-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach

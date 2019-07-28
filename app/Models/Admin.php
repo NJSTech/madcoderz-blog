@@ -17,7 +17,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'email_verified_at', 'job_title'];
+    protected $fillable = ['name', 'email', 'password', 'email_verified_at', 'job_title', 'status'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -44,7 +44,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     // Get the profile value for admin
     public function profile()
     {
-        return $this->morphOne('App\Models\Profile', 'profileable');
+        return $this->morphOne(Profile::class, 'profileable');
     }
     /**
      * Send the password reset notification.
@@ -59,5 +59,8 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     public function registerMediaCollections()
     {
         $this->addMediaCollection('profile');
+        $this->addMediaConversion('thumb')
+            ->width(300)
+            ->height(300);
     }
 }

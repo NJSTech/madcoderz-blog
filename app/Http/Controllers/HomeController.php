@@ -24,9 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $avatars = auth()->user()->getMedia('profile')->first();
-        $categories = Category::all();
-        return view('home', compact('categories'));
+        return view('home');
     }
     public function store(Request $request)
     {

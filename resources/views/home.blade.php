@@ -48,19 +48,20 @@
 		<div class="section no-padding-bottom">
 			<div class="container">
 				<div class="row col-spacing-20">
+					<div class="owl-carousel">
 					@foreach ($categories as $category)
-						
-					<div class="col-12 col-md-4">
+						<div class="item">
 						<div class="hoverbox-8">
 						<a href="{{ $category->category_path() }}">
-								<img src="{{ $category->getFirstMediaUrl('category','thumb') }}" alt="">
+								<img src="{{ $category->getFirstMediaUrl('category','thumb') }}" alt="{{ $category->category_name }}">
 								<div class="content">
 								<h6 class="heading-uppercase no-margin">{{ $category->category_name }}</h6>
 								</div>
 							</a>
 						</div>
-					</div>
+						</div>
 					@endforeach
+				</div>
 				</div><!-- end row -->
 			</div><!-- end container -->
 		</div>
@@ -69,101 +70,47 @@
 		<div class="section">
 			<div class="container">
 				<div class="row col-spacing-50">
-					<div class="col-12 col-lg-8">
+					<div class="col-12 col-lg-8 col-md-8">
 						<!-- Blog Post box 1 -->
+						@foreach($posts as $post)
 						<div class="margin-bottom-50">
 							<div class="hoverbox-8">
-								<a href="#">
-									<img src="/img/product-2.jpg" alt="">
+								<a href="{{ $post->path() }}">
+								<img src="{{ $post->getFirstMediaUrl('post') }}" alt="{{ $post->category->category_name }}">
 								</a>
 							</div>
 							<div class="margin-top-30">
 								<div class="d-flex justify-content-between margin-bottom-10">
 									<div class="d-inline-flex">
-										<a class="heading-uppercase" href="#">Lifestyle</a>
+										<a class="heading-uppercase" href="{{ $post->category->category_path() }}">{{ $post->category->category_name }}</a>
 									</div>
 									<div class="d-inline-flex">
-										<span class="font-small">Jan 24, 2019</span>
+										<span class="font-small">{{ date("M d Y",strtotime($post->created_at)) }}</span>
 									</div>
 								</div>
-								<h5><a href="#">Tips for Street Photography</a></h5>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+								<h5><a href="{{ $post->path() }}">{{ $post->title }}</a></h5>
+								<div>{!! substr($post->body,0,350) !!}</div>
 								<div class="margin-top-20">
-									<a class="text-btn button-font-2" href="#">Read More</a>
+									<a class="text-btn button-font-2" href="{{ $post->path() }}">Read More</a>
 								</div>
 							</div>
 						</div>
-						<!-- Blog Post box 2 -->
-						<div class="margin-bottom-50">
-							<div class="hoverbox-8">
-								<a href="#">
-									<img src="/img/product-2.jpg" alt="">
-								</a>
-							</div>
-							<div class="margin-top-30">
-								<div class="d-flex justify-content-between margin-bottom-10">
-									<div class="d-inline-flex">
-										<a class="heading-uppercase" href="#">Knowledge</a>
-									</div>
-									<div class="d-inline-flex">
-										<span class="font-small">Jan 24, 2019</span>
-									</div>
-								</div>
-								<h5><a href="#">10 Books that I will recommend</a></h5>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-								<div class="margin-top-20">
-									<a class="text-btn button-font-2" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
-						<!-- Blog Post box 3 -->
-						<div class="margin-bottom-50">
-							<div class="hoverbox-8">
-								<a href="#">
-									<img src="/img/product-2.jpg" alt="">
-								</a>
-							</div>
-							<div class="margin-top-30">
-								<div class="d-flex justify-content-between margin-bottom-10">
-									<div class="d-inline-flex">
-										<a class="heading-uppercase" href="#">Health</a>
-									</div>
-									<div class="d-inline-flex">
-										<span class="font-small">Jan 24, 2019</span>
-									</div>
-								</div>
-								<h5><a href="#">Benefits of house plants</a></h5>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-								<div class="margin-top-20">
-									<a class="text-btn button-font-2" href="#">Read More</a>
-								</div>
-							</div>
-						</div>
+						@endforeach
+						{{-- post box end --}}
 						<!-- Pagination -->
-						<nav>
-							<ul class="pagination justify-content-center margin-top-70">
-								<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-							</ul>
-						</nav>
+						{{ $posts->links() }}
 					</div>
 					<!-- end Blog Posts -->
 					
 					<!-- Blog Sidebar -->
-					<div class="col-12 col-lg-4 sidebar-wrapper">
-						
+					<div class="col-12 col-lg-4 col-md-8 sidebar-wrapper">
 						<!-- Sidebar box 1 - Categories -->
 						<div class="sidebar-box">
 							<h6 class="heading-uppercase">Categories</h6>
 							<ul class="list-category">
-								<li><a href="#">Art <span>11</span></a></li>
-								<li><a href="#">Fashion <span>4</span></a></li>
-								<li><a href="#">Lifestyle <span>12</span></a></li>
-								<li><a href="#">Nature <span>8</span></a></li>
-								<li><a href="#">Travel <span>15</span></a></li>
+								@foreach ($categories as $category)
+							<li><a href="#">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
+								@endforeach;
 							</ul>
 						</div>
 						<!-- Sidebar box 2 - Popular Posts -->
@@ -198,29 +145,18 @@
 						<div class="sidebar-box">
 							<h6 class="heading-uppercase">Tags</h6>
 							<ul class="tags">
-								<li><a href="#">Art</a></li>
-								<li><a href="#">Design</a></li>
-								<li><a href="#">Event</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Inspiration</a></li>
-								<li><a href="#">Movie</a></li>
-								<li><a href="#">Music</a></li>
-								<li><a href="#">Nature</a></li>
-								<li><a href="#">Office</a></li>
-								<li><a href="#">Painting</a></li>
-								<li><a href="#">Photography</a></li>
-								<li><a href="#">People</a></li>
-								<li><a href="#">Work</a></li>
+								@foreach($tags as $tag)
+									<li><a href="#">{{ $tag->tag_name }}</a></li>
+								@endforeach
 							</ul>
 						</div>
 						<!-- Sidebar box 4 - Facebook Like box -->
 						<div class="sidebar-box text-center">
 							<h6 class="heading-uppercase">Follow on</h6>
 							<ul class="list-horizontal-unstyled">
-								<li><a href="#"><i class="icon-social-facebook"></i></a></li>
-								<li><a href="#"><i class="icon-social-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-social-youtube"></i></a></li>
+								<li><a href="https://www.facebook.com/madcoderz" target="_blank"><i class="icon-social-facebook"></i></a></li>
+								<li><a href="https://twitter.com/CoderzMad" target="_blank"><i class="icon-social-twitter"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UCeRKu1G7QaViw5-oxv7iFTw" target="_blank"><i class="icon-social-youtube"></i></a></li>
 							</ul>
 						</div>
 						<!-- Sidebar box 5 - Subscribe -->

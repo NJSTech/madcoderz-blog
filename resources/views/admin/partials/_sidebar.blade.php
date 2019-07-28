@@ -23,7 +23,7 @@
                         </li>
                         <li {{ (Request::is('*tags*') ? 'class=active' : '') }}>
                         <a class="" href="{{ route('tags.index') }}" aria-expanded="false">
-                                <i class="icon-pin"></i>
+                                <i class="icon-tag"></i>
                                 <span>Tag</span>
                             </a>
                         </li>

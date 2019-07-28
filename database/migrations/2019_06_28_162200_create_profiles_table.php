@@ -18,8 +18,8 @@ class CreateProfilesTable extends Migration
             $table->text('about');
             $table->text('facebook')->nullable();
             $table->text('twitter')->nullable();
-            $table->bigInteger('userable_id');
-            $table->string('userable_type');
+            $table->bigInteger('profileable_id');
+            $table->string('profileable_type');
             $table->timestamps();
         });
     }

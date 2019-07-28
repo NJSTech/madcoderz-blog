@@ -322,5 +322,5 @@ $(function() {
             }
         }), $("#contactform input, #contactform textarea").removeClass("error-color"));
         a.preventDefault()
-    })
+    });
 });
