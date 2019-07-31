@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    protected $fillable = ['comment_id', 'reply', 'userable_id', 'userable_type'];
+    protected $fillable = ['comment_id', 'reply', 'replyable_id', 'replyable_type'];
+    public function replyable()
+    {
+        return $this->morphTo();
+    }
 }

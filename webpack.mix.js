@@ -33,7 +33,8 @@ mix.sass('resources/sass/app.scss', 'public/css/app.css')
       
       .js([
             'resources/js/custom.js',
-            'resources/js/home.js'
+            'resources/js/home.js',
+            'resources/js/comment.js'
       ],'public/js/custom.js')
       .js([
             'resources/js/admin-script.js',

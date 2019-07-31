@@ -1,24 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="scrolltotop">
-			<a class="button-circle button-circle-sm button-circle-dark" href="#"><i class="icon-arrow-up"></i></a>
-		</div>
-		<!-- end Scroll to top button -->
-
-		<!-- Fullscreen Search Form -->
-		<div class="search-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
-						<input type="text" placeholder="Search.." name="search" required>
-						<button><i class="icon-search"></i></button>
-					</div>
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</div>
-		<!-- end Fullscreen Search Form -->
-
 		<!-- Home section -->
 		<div class="owl-carousel owl-nav-overlay owl-dots-overlay" data-owl-autoplay="true" data-owl-nav="true" data-owl-dots="true" data-owl-items="1">
 			<!-- Slider box 1 -->
@@ -109,8 +91,8 @@
 							<h6 class="heading-uppercase">Categories</h6>
 							<ul class="list-category">
 								@foreach ($categories as $category)
-							<li><a href="#">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
-								@endforeach;
+									<li><a href="{{ $category->category_path() }}">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
+								@endforeach
 							</ul>
 						</div>
 						<!-- Sidebar box 2 - Popular Posts -->
@@ -146,7 +128,7 @@
 							<h6 class="heading-uppercase">Tags</h6>
 							<ul class="tags">
 								@foreach($tags as $tag)
-									<li><a href="#">{{ $tag->tag_name }}</a></li>
+									<li><a href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a></li>
 								@endforeach
 							</ul>
 						</div>

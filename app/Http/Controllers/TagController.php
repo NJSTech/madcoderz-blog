@@ -1,19 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admins;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Tag;
-use App\Http\Requests\TagCreateRequest;
-use App\Http\Requests\TagsUpdateRequest;
 
 class TagController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::paginate(15);
-        return view('admin.tags', compact('tags'));
+        //
     }
 
     /**
@@ -32,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        // return view('admin.tag-create');
+        //
     }
 
     /**
@@ -41,13 +33,9 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagCreateRequest $request)
+    public function store(Request $request)
     {
-        $request->merge([
-            'tag_name' => str_replace(' ', '', $request->tag_name),
-        ]);
-        Tag::create($request->all());
-        return redirect()->back()->with('status', 'Successfully Created');
+        //
     }
 
     /**
@@ -56,8 +44,12 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    { }
+    public function show($tag)
+    {
+        $tag = Tag::where('tag_name', $tag)->firstOrFail();
+        $posts = $tag->posts()->paginate(5);
+        return view('all-blog', compact('tag', 'posts'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,9 +57,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        return view('admin.tags-update', compact('tag'));
+        //
     }
 
     /**
@@ -77,13 +69,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagsUpdateRequest $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        $request->merge([
-            'tag_name' => str_replace(' ', '', $request->tag_name),
-        ]);
-        $tag->update($request->all());
-        return redirect()->back()->with('status', 'Successfully Updated');
+        //
     }
 
     /**
@@ -92,8 +80,8 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        $tag->delete();
+        //
     }
 }

@@ -24,4 +24,8 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Models\Post', 'post_tag');
     }
+    public function tag_path()
+    {
+        return '/tags/' . $this->tag_name;
+    }
 }

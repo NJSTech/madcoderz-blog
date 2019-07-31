@@ -2622,9 +2622,9 @@ input:active, input:focus, textarea:active, textarea:focus {
     outline: 0;
     box-shadow: none;
 }
-textarea {
+/* textarea {
     height: 140px;
-}
+} */
 label {
     margin-bottom: 5px;
 }
@@ -2941,9 +2941,9 @@ div[class*=' bg-grey'] .form-style-5 .custom-select:focus, div[class*=' bg-grey'
     background: rgba(255, 255, 255, .3);
 }
 img {
-    width: auto;
+    /* width: auto; */
     max-width: 100%;
-    height: auto;
+    /* height: auto; */
 }
 img.img-circle-2xl, img.img-circle-3xl, img.img-circle-lg, img.img-circle-md, img.img-circle-sm, img.img-circle-xl, img.img-circle-xs {
     border-radius: 50%}
@@ -3749,16 +3749,16 @@ ol.list-ordered-style-5 li::before {
     background: 0 0;
 }
 .navbar-dark .navbar-brand, .navbar-dark h1, .navbar-dark h2, .navbar-dark h3, .navbar-dark h4, .navbar-dark h5, .navbar-dark h6, .navbar-transparent-dark .navbar-brand, .navbar-transparent-dark h1, .navbar-transparent-dark h2, .navbar-transparent-dark h3, .navbar-transparent-dark h4, .navbar-transparent-dark h5, .navbar-transparent-dark h6 {
-    color: #fff;
+    /* color: #fff; */
 }
 .navbar-dark .list-horizontal li, .navbar-dark .list-horizontal-dash li, .navbar-dark .list-horizontal-unstyled li, .navbar-transparent-dark .list-horizontal li, .navbar-transparent-dark .list-horizontal-dash li, .navbar-transparent-dark .list-horizontal-unstyled li {
-    color: rgba(255, 255, 255, .7);
+    /* color: rgba(255, 255, 255, .7); */
 }
 .navbar-dark .list-horizontal li a, .navbar-dark .list-horizontal-dash li a, .navbar-dark .list-horizontal-unstyled li a, .navbar-transparent-dark .list-horizontal li a, .navbar-transparent-dark .list-horizontal-dash li a, .navbar-transparent-dark .list-horizontal-unstyled li a {
-    color: #fff;
+    /* color: #fff; */
 }
 .navbar-dark .list-horizontal li a:hover, .navbar-dark .list-horizontal-dash li a:hover, .navbar-dark .list-horizontal-unstyled li a:hover, .navbar-transparent-dark .list-horizontal li a:hover, .navbar-transparent-dark .list-horizontal-dash li a:hover, .navbar-transparent-dark .list-horizontal-unstyled li a:hover {
-    color: rgba(255, 255, 255, .7);
+    color:rgba(14, 29, 103, 0.7);
 }
 @media (min-width:992px) {
     .navbar-dark .nav .nav-item .nav-link, .navbar-transparent-dark .nav .nav-item .nav-link {
@@ -8966,4 +8966,7 @@ body.loaded:after {
     
 	box-shadow:  0 4px 24px 0 rgba(0, 0, 0, 0.3);
     
+}
+.comment-box.of-reply {
+    display: none;
 }

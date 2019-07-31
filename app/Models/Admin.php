@@ -63,4 +63,14 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
             ->width(300)
             ->height(300);
     }
+    // user comment
+    public function comment()
+    {
+        return $this->morphOne(Comment::class, 'commentable');
+    }
+    // user reply
+    public function reply()
+    {
+        return $this->morphOne(Reply::class, 'replyable');
+    }
 }
