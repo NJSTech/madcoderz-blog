@@ -7,7 +7,7 @@
         <div class="container text-center">
             <h1 class="font-weight-light text-white">{{ $post->title }}</h1>
             <ul class="list-horizontal-dash">
-            <li><a href="#">{{ date('M d Y',strtotime($post->created_at)) }}</a></li><li><a href="#">{{ $post->category->category_name }}</a></li><li><a href="#">By {{ $post->author->name }}</a></li>
+            <li class="text-white">{{ date('M d Y',strtotime($post->created_at)) }}</li><li><a href="{{ $post->category->category_path() }}">{{ $post->category->category_name }}</a></li><li class="text-white">By {{ $post->author->name }}</li>
             </ul>
         </div><!-- end container -->
     </div>
@@ -29,7 +29,7 @@
                             <h6 class="heading-uppercase">Tags</h6>
                             <ul class="list-horizontal">
                                 @foreach($post->tags as $tag)
-                            <li><a class="hyperlink-1" href="#">{{ $tag->tag_name }}</a></li>
+                                    <li><a class="hyperlink-1" href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -42,55 +42,76 @@
                         </div>
                     </div>
                     <!-- end Post Tags / Share -->
-
+                     <!-- Write a Comment -->
+                     <div class="border-top margin-top-60">
+                        <h5 class="margin-top-50 margin-bottom-30">Write a Comment</h5>
+                        <form method="POST" action="{{ route('comment.store') }}" enctype="multipart/form-data" accept="UTF-8">
+                            @csrf
+                            <textarea name="comment" placeholder="Message">{{ old('comment') }}</textarea>
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <button class="button button-lg button-grey float-right" type="submit">Post Comment</button>
+                        </form>
+                    </div>
                     <!-- Comments -->
                     <div class="border-top margin-top-60">
                         <h5 class="margin-top-50 margin-bottom-30">Comments</h5>
                         <!-- Comment box 1 -->
+                        @foreach ($post->comments as $comment)
                         <div class="comment-box">
                             <div class="comment-user-avatar">
-                                <i class="fa fa-user"></i>
+                                    @if ($comment->commentable->getFirstMediaUrl('profile','thumb'))
+										<img alt="madol" src="{{ $comment->commentable->getFirstMediaUrl('profile','thumb')}}" class="list-thumbnail rounded-circle" height="50" width="50">
+									@else
+									<img alt="madol" src="{{ asset('img/default.jpg') }}"class="list-thumbnail rounded-circle" height="50" width="50">
+									@endif
                             </div>
                             <div class="comment-content">
-                                <span class="comment-time">2 hours ago</span>
-                                <h6 class="no-margin font-weight-normal">John Smith</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            </div>
-                        </div>
-                        <!-- Comment box 2 -->
-                        <div class="comment-box">
+                            <span class="comment-time">{{ $comment->created_at->diffForHumans() }}</span>
+                                <h6 class="no-margin font-weight-normal">{{ $comment->commentable->name }}</h6>
+                            <p>{{ $comment->comment }}</p>
+                            <a href="#" class="text-14 bold mb-10 show-reply-input">Reply</a>
+                            {{-- write a reply --}}
+                            <div class="comment-box of-reply">
+                                <div class="comment-user-avatar">
+                                    @if ($comment->commentable->getFirstMediaUrl('profile','thumb'))
+										<img alt="madol" src="{{ $comment->commentable->getFirstMediaUrl('profile','thumb')}}" class="list-thumbnail rounded-circle" height="50" width="50">
+									@else
+									<img alt="madol" src="{{ asset('img/default.jpg') }}"class="list-thumbnail rounded-circle" height="50" width="50">
+									@endif
+                                </div>
+                                <form action="{{route('comment.reply.store')}}" method="POST">
+                                    @csrf
+                                    <textarea name="reply" class="reply-input adjust-reply reply" rows="1" cols="3" placeholder="Add a public comment"></textarea>
+                                    <input type="hidden" name="comment_id" value="{{ $comment->id }}">
+                                    <button class="btn btn-primary do-reply">Reply</button>
+                                </form>
+                                </div>
+                                {{-- write a reply --}}
+                            {{-- reply start --}}
+                            @foreach ($comment->replies as $reply)
+                            <div class="comment-box children mt-2">
                             <div class="comment-user-avatar">
-                                <i class="fa fa-user"></i>
+                                    @if ($reply->replyable->getFirstMediaUrl('profile','thumb'))
+										<img alt="madol" src="{{ $reply->replyable->getFirstMediaUrl('profile','thumb')}}" class="list-thumbnail rounded-circle" height="50" width="50">
+									@else
+									<img alt="madol" src="{{ asset('img/default.jpg') }}"class="list-thumbnail rounded-circle" height="50" width="50">
+									@endif
                             </div>
                             <div class="comment-content">
-                                <span class="comment-time">5 hours ago</span>
-                                <h6 class="no-margin font-weight-normal">Alexander Warren</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                            <span class="comment-time">{{ $reply->created_at->diffForHumans() }}</span>
+                                <h6 class="no-margin font-weight-normal">{{ $reply->replyable->name }}</h6>
+                            <p>{{ $reply->reply }}</p>
                             </div>
+                            </div>
+                            @endforeach
+                             {{-- reply end --}}
+                            
                         </div>
-                        <!-- Comment box 3 -->
-                        <div class="comment-box">
-                            <div class="comment-user-avatar">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="comment-content">
-                                <span class="comment-time">1 day ago</span>
-                                <h6 class="no-margin font-weight-normal">Melissa Bakos</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            </div>
                         </div>
+                        @endforeach
+                        
                     </div>
-
-                    <!-- Write a Comment -->
-                    <div class="border-top margin-top-60">
-                        <h5 class="margin-top-50 margin-bottom-30">Write a Comment</h5>
-                        <form>
-                            <input type="text" name="name" placeholder="Name" required>
-                            <input type="email" name="email" placeholder="E-Mail" required>
-                            <textarea name="message" placeholder="Message"></textarea>
-                            <button class="button button-lg button-grey" type="submit">Post Comment</button>
-                        </form>
-                    </div>
+                      
                 </div>
                 <!-- end Post Content -->
 
@@ -162,7 +183,7 @@
                         <h6 class="heading-uppercase">Tags</h6>
                         <ul class="tags">
                             @foreach($tags as $tag)
-                                <li><a href="#">{{ $tag->tag_name }}</a></li>
+                                <li><a href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -170,9 +191,8 @@
                     <div class="sidebar-box text-center">
                         <h6 class="heading-uppercase">Follow On</h6>
                         <ul class="list-horizontal-unstyled">
-								<li><a href="https://www.facebook.com/madcoderz" target="_blank"><i class="icon-social-facebook"></i></a></li>
-								<li><a href="https://twitter.com/CoderzMad" target="_blank"><i class="icon-social-twitter"></i></a></li>
-								<li><a href="https://www.youtube.com/channel/UCeRKu1G7QaViw5-oxv7iFTw" target="_blank"><i class="icon-social-youtube"></i></a></li>
+                                <li><a href="{{ $post->author->profile->facebook }}" target="_blank"><i class="icon-social-facebook"></i></a></li>
+								<li><a href="{{ $post->author->profile->twitter }}" target="_blank"><i class="icon-social-twitter"></i></a></li>
 							</ul>
                     </div>
                     <!-- Sidebar box 7 - Subscribe -->

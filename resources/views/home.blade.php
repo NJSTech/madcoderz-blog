@@ -1,20 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-		<!-- Fullscreen Search Form -->
-		<div class="search-wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
-						<input type="text" placeholder="Search.." name="search" required>
-						<button><i class="icon-search"></i></button>
-					</div>
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</div>
-		<!-- end Fullscreen Search Form -->
-
 		<!-- Home section -->
 		<div class="owl-carousel owl-nav-overlay owl-dots-overlay" data-owl-autoplay="true" data-owl-nav="true" data-owl-dots="true" data-owl-items="1">
 			<!-- Slider box 1 -->
@@ -142,7 +128,7 @@
 							<h6 class="heading-uppercase">Tags</h6>
 							<ul class="tags">
 								@foreach($tags as $tag)
-									<li><a href="#">{{ $tag->tag_name }}</a></li>
+									<li><a href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a></li>
 								@endforeach
 							</ul>
 						</div>

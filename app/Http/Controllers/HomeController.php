@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -24,12 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-    public function store(Request $request)
-    {
-        $user = auth()->user();
-        $user->addMedia($request->avatar)->toMediaCollection('profile');
-        return redirect()->back();
+        $posts = Post::paginate(5);
+        return view('home', compact('posts'));
     }
 }

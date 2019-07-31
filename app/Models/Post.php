@@ -51,7 +51,7 @@ class Post extends Model implements HasMedia
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class)->orderBy('id', 'desc');
     }
     // set post path
     public function path()

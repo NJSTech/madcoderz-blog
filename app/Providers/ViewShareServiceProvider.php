@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
 use View;
-use Auth;
 
 class ViewShareServiceProvider extends ServiceProvider
 {
@@ -28,11 +27,9 @@ class ViewShareServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $categories =Category::all();
+        $categories = Category::all();
         View::share('categories', $categories);
-        $tags =Tag::all();
-        View::share('tags',$tags);
-        $posts =Post::paginate(5);
-        View::share('posts',$posts);
+        $tags = Tag::all();
+        View::share('tags', $tags);
     }
 }

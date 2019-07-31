@@ -41,4 +41,14 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->morphOne('App\Models\Profile', 'profileable');
     }
+    // user comment
+    public function comment()
+    {
+        return $this->morphOne(Comment::class, 'commentable');
+    }
+    // user reply
+    public function reply()
+    {
+        return $this->morphOne(Reply::class, 'replyable');
+    }
 }

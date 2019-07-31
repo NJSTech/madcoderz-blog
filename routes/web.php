@@ -21,7 +21,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/store', 'HomeController@store')->name('user.fileUpload');
 Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::prefix('admin')->group(function () {
     Route::get('/loginForm', 'Auth\AdminLoginController@ShowLoginForm')->name('admin.login');
@@ -65,8 +64,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/passwordChange', 'Admins\AdminController@changePassword')->name('admin.change.password');
     Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request');
 });
-
+// frontend page route
+// post route
 Route::prefix('posts')->group(function () {
-    Route::get('/', 'PostController@index')->name('posts.index');
+    Route::get('/all', 'PostController@index')->name('posts.home.index');
     Route::get('/{post}', 'PostController@show')->name('posts.show');
+    Route::get('/', 'PostController@search')->name('posts.search');
+});
+// categories route
+Route::prefix('categories')->group(function () {
+    Route::get('/', 'CategoryController@index')->name('categories.home.index');
+    Route::get('/{category}', 'CategoryController@show')->name('categories.show');
+});
+// tags route
+Route::prefix('tags')->group(function () {
+    Route::get('/', 'TagController@index')->name('tags.home.index');
+    Route::get('/{tag}', 'TagController@show')->name('tags.post.show');
+});
+Route::group(['prefix' => 'comments'], function () {
+    Route::post('/store', 'CommentController@store')->name('comment.store');
+    Route::post('/reply/store', 'ReplyController@store')->name('comment.reply.store');
 });

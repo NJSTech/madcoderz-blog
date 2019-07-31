@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Category;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
-        return view('all-blog', compact('posts'));
+        //
     }
 
     /**
@@ -45,10 +44,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($post)
+    public function show($category)
     {
-        $post = Post::where('slug', $post)->firstOrFail();
-        return view('single-post', compact('post'));
+        $category = Category::where('category_slug', $category)->firstOrFail();
+        $posts = $category->posts()->paginate(5);
+        return view('all-blog', compact('category', 'posts'));
     }
 
     /**
@@ -83,22 +83,5 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function search()
-    {
-        $search = request('search');
-        $posts = Post::with(['category', 'tags', 'author'])
-            ->where('title', 'LIKE', '%' . $search . '%') //Give me this album if its title matches the input
-            // I need this album if any of its user's name matches the given input
-            ->orWhereHas('category', function ($q) use ($search) {
-                return $q->where('category_name', 'LIKE', '%' . $search . '%');
-            })
-            // I need this album if any of its tracks' title matches the given input
-            ->orWhereHas('tags', function ($q) use ($search) {
-                return $q->where('tag_name', 'LIKE', '%' . $search . '%');
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(3);
-        return view('all-blog', compact('posts'));
     }
 }
