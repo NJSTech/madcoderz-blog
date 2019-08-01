@@ -32,6 +32,7 @@ class Category extends Model implements HasMedia
     {
         return $this->hasMany(Post::class);
     }
+    //create category path
     public function category_path()
     {
         return '/categories/' . $this->category_slug;

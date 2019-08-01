@@ -56,6 +56,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         $this->notify(new AdminResetPasswordNotification($token));
     }
+    // register media library collection
     public function registerMediaCollections()
     {
         $this->addMediaCollection('profile');
@@ -63,12 +64,12 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
             ->width(300)
             ->height(300);
     }
-    // user comment
+    // admin comment
     public function comment()
     {
         return $this->morphOne(Comment::class, 'commentable');
     }
-    // user reply
+    // admin reply
     public function reply()
     {
         return $this->morphOne(Reply::class, 'replyable');
