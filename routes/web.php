@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 // frontend page route
 // post route
 Route::prefix('posts')->group(function () {
-    Route::get('/all', 'PostController@index')->name('posts.home.index');
+    Route::get('/all-posts', 'PostController@index')->name('posts.home.index');
     Route::get('/{post}', 'PostController@show')->name('posts.show');
     Route::get('/', 'PostController@search')->name('posts.search');
 });
@@ -84,4 +84,10 @@ Route::prefix('tags')->group(function () {
 Route::group(['prefix' => 'comments'], function () {
     Route::post('/store', 'CommentController@store')->name('comment.store');
     Route::post('/reply/store', 'ReplyController@store')->name('comment.reply.store');
+});
+Route::get('/about-us', function () {
+    return view('about-us');
+});
+Route::get('/contact-us', function () {
+    return view('contact-us');
 });

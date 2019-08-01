@@ -2625,6 +2625,10 @@ input:active, input:focus, textarea:active, textarea:focus {
 /* textarea {
     height: 140px;
 } */
+.nav-link {
+    display: block;
+    padding: 1rem 1rem;
+  }
 label {
     margin-bottom: 5px;
 }
