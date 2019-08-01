@@ -1,31 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-		<!-- Home section -->
-		<div class="owl-carousel owl-nav-overlay owl-dots-overlay" data-owl-autoplay="true" data-owl-nav="true" data-owl-dots="true" data-owl-items="1">
-			<!-- Slider box 1 -->
-			<div class="bg-image" style="background-image: url('/img/product-2.jpg')">
-				<div class="section-lg bg-black-06">
-					<div class="container text-center">
-						<h6 class="heading-uppercase margin-bottom-20">Lifestyle, Travel</h6>
-						<h1>Working remotely</h1>
-						<a class="button button-lg button-radius button-border-2px button-reveal-right-outline-white margin-top-20" href="#"> <span>Read More</span></a>
-					</div>
-				</div>
-			</div>
-			<!-- Slider box 2 -->
-			<div class="bg-image" style="background-image: url('/img/product-2.jpg')">
-				<div class="section-lg bg-black-06">
-					<div class="container text-center">
-						<h6 class="heading-uppercase margin-bottom-20">Work, Interview</h6>
-						<h1>Working as a Blacksmith</h1>
-						<a class="button button-lg button-radius button-border-2px button-reveal-right-outline-white margin-top-20" href="#"> <span>Read More</span></a>
-					</div>
-				</div>
-			</div>
-		</div><!-- end owl-carousel -->
-		<!-- end Home section -->
-
 		<!-- Category section -->
 		<div class="section no-padding-bottom">
 			<div class="container">
@@ -144,9 +119,10 @@
 						<!-- Sidebar box 5 - Subscribe -->
 						<div class="sidebar-box">
 							<h6 class="heading-uppercase">Subscribe</h6>
-							<form>
+							<form method="POST" action="{{ route('subscribe.store') }}">
+								@csrf
 								<input type="text" placeholder="Email Address.." name="email" required>
-								<button class="button button-lg button-grey button-fullwidth">Sign Up</button>
+								<button type="submit" class="button button-lg button-grey button-fullwidth">Sign Up</button>
 							</form>
 						</div>
 					</div>

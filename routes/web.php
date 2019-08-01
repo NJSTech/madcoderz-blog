@@ -91,3 +91,4 @@ Route::get('/about-us', function () {
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
+Route::post('/store', 'SubscribeController@store')->name('subscribe.store');

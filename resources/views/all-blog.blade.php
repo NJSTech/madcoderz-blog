@@ -41,6 +41,7 @@
 								</div>
 							</div>
                         </div>
+                        <i class="icon-like"></i>
                         @empty
                             <h6>No Posts Available</h6>
 						@endforelse
