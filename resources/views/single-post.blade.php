@@ -81,7 +81,7 @@
                                 </div>
                                 <form action="{{route('comment.reply.store')}}" method="POST">
                                     @csrf
-                                    <textarea name="reply" class="reply-input adjust-reply reply" rows="1" cols="3" placeholder="Add a public comment"></textarea>
+                                    <textarea name="reply" class="reply-input adjust-reply reply" rows="1" cols="3" placeholder="Add a Reply"></textarea>
                                     <input type="hidden" name="comment_id" value="{{ $comment->id }}">
                                     <button class="btn btn-primary do-reply">Reply</button>
                                 </form>

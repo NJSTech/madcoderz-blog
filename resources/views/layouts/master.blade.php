@@ -13,7 +13,8 @@
 		<!-- CSS -->
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/all.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 	</head>
 	<body data-preloader="2">
 
@@ -25,8 +26,11 @@
 
 		<!-- ***** JAVASCRIPTS ***** -->
 		<script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/all.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
+		<script src="{{ asset('js/all.js') }}"></script>
+		<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+		{!! Toastr::message() !!}
+		<script src="{{ asset('js/custom.js') }}"></script>
+		
 	</body>
 
 </html>
