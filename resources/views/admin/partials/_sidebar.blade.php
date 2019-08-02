@@ -37,6 +37,12 @@
                                 <li><a href="{{ route('posts.create') }}">Create Post</a></li>
                             </ul>
                         </li>
+                        <li {{ (Request::is('*subscribers*') ? 'class=active' : '') }}>
+                            <a class="" href="{{ route('subscribe.index') }}" aria-expanded="false">
+                                <i class="icon-list"></i>
+                                <span>Subscribers</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -14,6 +14,7 @@
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/all.css') }}" rel="stylesheet">
         <link href="{{ asset('css/admin-style.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
         
 	</head>
 
@@ -35,6 +36,18 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/all.js') }}"></script>
     <script src="{{ asset('js/admin-script.js') }}"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+		{!! Toastr::message() !!}
+		<script>
+			@if($errors->any())
+			@foreach($errors->all() as $error)
+			toastr.error('{{ $error }}','Error',{
+				closeButton:true,
+				progressBar:true,
+			});
+			@endforeach
+			@endif
+		</script>
     @stack('scripts')
     <!--script-->
 </body>

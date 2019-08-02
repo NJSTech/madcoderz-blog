@@ -57,6 +57,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
         Route::put('/{post}', 'Admins\PostController@update')->name('posts.update');
         Route::get('destroy/{post}', 'Admins\PostController@destroy')->name('posts.destroy');
     });
+    Route::prefix('subscribes')->group(function () {
+        Route::get('/', 'Admins\SubscribeController@index')->name('subscribe.index');
+        Route::get('destroy/{subcribe}', 'Admins\SubscribeController@destroy')->name('subscribe.destroy');
+    });
     Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
     Route::get('/{admin}/edit', 'Admins\AdminController@edit')->name('admin.profile');
     Route::put('/{admin}', 'Admins\AdminController@update')->name('admin.update');
