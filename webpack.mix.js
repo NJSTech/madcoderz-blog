@@ -41,6 +41,7 @@ mix.sass('resources/sass/app.scss', 'public/css/app.css')
             'resources/js/dashboard.js',
             'resources/js/category.js',
             'resources/js/tag.js',
-            'resources/js/post-destroy.js'
+            'resources/js/post-destroy.js',
+            'resources/js/subscribe.js',
       ],'public/js/admin-script.js')
       .js('resources/js/post.js','public/js/post.js');

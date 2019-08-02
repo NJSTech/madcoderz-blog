@@ -11,6 +11,9 @@ use Auth;
 use App\Models\Category;
 use App\Models\Tag;
 use Purifier;
+use App\Models\Subscriber;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewPostNotify;
 
 class PostController extends Controller
 {
@@ -56,6 +59,13 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $post->addMedia($request->image)->toMediaCollection('post');
         $post->tags()->sync((array) $request->input('tags'));
+        if ($request->status == 1) {
+            $subscribers = Subscriber::all();
+            foreach ($subscribers as $subscriber) {
+                Notification::route('mail', $subscriber->email)
+                    ->notify(new NewPostNotify($post));
+            }
+        }
         return redirect()->back()->with('status', 'Successfully Created');
     }
 

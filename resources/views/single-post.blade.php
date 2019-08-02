@@ -198,9 +198,10 @@
                     <!-- Sidebar box 7 - Subscribe -->
                     <div class="sidebar-box">
                         <h6 class="heading-uppercase">Subscribe</h6>
-                        <form>
+                        <form method="POST" action="{{ route('subscribe.store') }}">
+                            @csrf
                             <input type="text" placeholder="Email Address.." name="email" required>
-                            <button class="button button-lg button-grey button-fullwidth">Sign Up</button>
+                            <button type="submit" class="button button-lg button-grey button-fullwidth">Sign Up</button>
                         </form>
                     </div>
                 </div>

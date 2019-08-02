@@ -273,6 +273,47 @@ $(document).on('click', '.post-destroy', function (e) {
 
 /***/ }),
 
+/***/ "./resources/js/subscribe.js":
+/*!***********************************!*\
+  !*** ./resources/js/subscribe.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).on('click', '.subscribe-destroy', function (e) {
+  e.preventDefault();
+  var id = $(this).data('id');
+  var url = 'subscribes/destroy/' + id;
+  Swal.fire({
+    title: 'Are you sure?',
+    // text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      $.ajax({
+        type: "GET",
+        url: url,
+        // data: {id:id},
+        success: function success(response) {
+          if (response.status == 'success') {
+            $(".flashmessage").fadeIn('fast').delay(2000).fadeOut('fast').text(response.message);
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        }
+      });
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/tag.js":
 /*!*****************************!*\
   !*** ./resources/js/tag.js ***!
@@ -316,9 +357,9 @@ $(function () {
 /***/ }),
 
 /***/ 3:
-/*!********************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ***!
-  \********************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ***!
+  \************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -326,7 +367,8 @@ __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-sc
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\subscribe.js */"./resources/js/subscribe.js");
 
 
 /***/ })

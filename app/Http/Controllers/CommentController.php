@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Auth;
 use App\Http\Requests\CommentCreateRequest;
+use Toastr;
 
 class CommentController extends Controller
 {
@@ -19,6 +20,7 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->post_id = $request->post_id;
         $user->comment()->save($comment);
-        return redirect()->back()->with('status', 'Successfully Added');
+        Toastr::success('Successfully Added', 'success');
+        return redirect()->back();
     }
 }
