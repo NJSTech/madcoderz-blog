@@ -5,7 +5,7 @@
         <h6 class="heading-uppercase">Categories</h6>
         <ul class="list-category">
             @foreach ($categories as $category)
-                <li><a href="{{ $category->category_path() }}">{{ $category->category_name }} <span>{{ $category->posts()->count() }}</span></a></li>
+                <li><a href="{{ $category->category_path() }}">{{ $category->category_name }} <span>{{ $category->posts()->published()->count() }}</span></a></li>
             @endforeach
         </ul>
     </div>
@@ -13,29 +13,15 @@
     <div class="sidebar-box">
         <h6 class="heading-uppercase">Popular Posts</h6>
         <!-- Popular post 1 -->
+        @foreach ($populars as $popular)
         <div class="popular-post">
-            <a href="#"><img src="/img/product-2.jpg" alt=""></a>
+        <a href="{{ $popular->path() }}"><img src="{{ $popular->getFirstMediaUrl('post','thumb') }}" alt="{{ $popular->category->category_name }}"></a>
             <div>
-                <h6 class="font-weight-normal"><a href="#">Street art wall</a></h6>
-                <span>Feb 15, 2018</span>
+            <p class="font-weight-normal"><a href="{{ $popular->path() }}">{{ $popular->title }}</a></p>
+            <span>{{ date('M d Y',strtotime($popular->created_at)) }}</span>
             </div>
         </div>
-        <!-- Popular post 2 -->
-        <div class="popular-post">
-            <a href="#"><img src="/img/product-2.jpg" alt=""></a>
-            <div>
-                <h6 class="font-weight-normal"><a href="#">Roasted coffee beans</a></h6>
-                <span>Feb 15, 2018</span>
-            </div>
-        </div>
-        <!-- Popular post 3 -->
-        <div class="popular-post">
-            <a href="#"><img src="/img/product-2.jpg" alt=""></a>
-            <div>
-                <h6 class="font-weight-normal"><a href="#">Artist at work</a></h6>
-                <span>Feb 13, 2018</span>
-            </div>
-        </div>
+        @endforeach
     </div>
     <!-- Sidebar box 3 - Tags -->
     <div class="sidebar-box">

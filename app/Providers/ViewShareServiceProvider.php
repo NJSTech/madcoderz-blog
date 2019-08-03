@@ -31,5 +31,7 @@ class ViewShareServiceProvider extends ServiceProvider
         View::share('categories', $categories);
         $tags = Tag::all();
         View::share('tags', $tags);
+        $populars = Post::popular()->get();
+        View::share('populars', $populars);
     }
 }

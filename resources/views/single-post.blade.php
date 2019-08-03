@@ -36,8 +36,15 @@
                         <div class="col-6 text-right">
                             <h6 class="heading-uppercase">Share On</h6>
                             <ul class="list-horizontal-unstyled">
-                                <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                <li>
+                                    @php
+                                        $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                                    @endphp
+                                    <iframe src="https://www.facebook.com/plugins/share_button.php?href={{ $actual_link}}&layout=button&size=large&width=73&height=28&appId" width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                </li>
+                                <li><a class="twitter-share-button"
+                                href="https://twitter.com/intent/tweet?text={{ $actual_link }}" data-size="large">
+                                  Tweet</a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,7 +112,6 @@
                             </div>
                             @endforeach
                              {{-- reply end --}}
-                            
                         </div>
                         </div>
                         @endforeach
@@ -123,10 +129,8 @@
                     <img class="img-circle-md margin-bottom-20" src="{{ $post->author->getFirstMediaUrl('profile','thumb') }}" alt="">
                         <p>{{ $post->author->profile->about }}.</p>
                         <ul class="list-horizontal-unstyled margin-top-20">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="{{ $post->author->profile->facebook }}" target="_blank"><i class="icon-social-facebook"></i></a></li>
+                            <li><a href="{{ $post->author->profile->twitter }}" target="_blank"><i class="icon-social-twitter"></i></a></li>
                         </ul>
                     </div>
                     <!-- Sidebar box 2 - Categories -->
@@ -141,44 +145,17 @@
                     <!-- Sidebar box 3 - Popular Posts -->
                     <div class="sidebar-box">
                         <h6 class="heading-uppercase">Popular Posts</h6>
-                        <!-- Popular post 1 -->
+                        @foreach ($populars as $popular)
                         <div class="popular-post">
-                            <a href="/Blog/Single/Image-Post.html">
-                                <img src="../../assets/images/popular-post-1.jpg" alt="">
-                            </a>
+                        <a href="{{ $popular->path() }}"><img src="{{ $popular->getFirstMediaUrl('post','thumb') }}" alt="{{ $popular->category->category_name }}"></a>
                             <div>
-                                <h6 class="font-weight-normal"><a href="/Blog/Single/Image-Post.html">Street art wall</a></h6>
-                                <span>Feb 15, 2018</span>
+                            <p class="font-weight-normal"><a href="{{ $popular->path() }}">{{ $popular->title }}</a></p>
+                            <span>{{ date('M d Y',strtotime($popular->created_at)) }}</span>
                             </div>
                         </div>
-                        <!-- Popular post 2 -->
-                        <div class="popular-post">
-                            <a href="/Blog/Single/Image-Post.html">
-                                <img src="../../assets/images/popular-post-2.jpg" alt="">
-                            </a>
-                            <div>
-                                <h6 class="font-weight-normal"><a href="/Blog/Single/Image-Post.html">Roasted coffee beans</a></h6>
-                                <span>Feb 15, 2018</span>
-                            </div>
-                        </div>
-                        <!-- Popular post 3 -->
-                        <div class="popular-post">
-                            <a href="/Blog/Single/Image-Post.html">
-                                <img src="../../assets/images/popular-post-3.jpg" alt="">
-                            </a>
-                            <div>
-                                <h6 class="font-weight-normal"><a href="/Blog/Single/Image-Post.html">Artist at work</a></h6>
-                                <span>Feb 13, 2018</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <!-- Sidebar box 4 - Banner Image -->
-                    <div class="margin-bottom-30">
-                        <a href="#">
-                            <img src="../../assets/images/blog-banner.jpg" alt="">
-                        </a>
-                    </div>
-                    <!-- Sidebar box 5 - Tags -->
+                    <!-- Sidebar box 4 - Tags -->
                     <div class="sidebar-box">
                         <h6 class="heading-uppercase">Tags</h6>
                         <ul class="tags">
@@ -187,7 +164,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <!-- Sidebar box 6 - Facebook Like box -->
+                    <!-- Sidebar box 5 - Facebook Like box -->
                     <div class="sidebar-box text-center">
                         <h6 class="heading-uppercase">Follow On</h6>
                         <ul class="list-horizontal-unstyled">
@@ -195,7 +172,7 @@
 								<li><a href="{{ $post->author->profile->twitter }}" target="_blank"><i class="icon-social-twitter"></i></a></li>
 							</ul>
                     </div>
-                    <!-- Sidebar box 7 - Subscribe -->
+                    <!-- Sidebar box 6  - Subscribe -->
                     <div class="sidebar-box">
                         <h6 class="heading-uppercase">Subscribe</h6>
                         <form method="POST" action="{{ route('subscribe.store') }}">

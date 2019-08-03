@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reply;
-use App\Models\User;
-use App\Models\Admin;
 use Auth;
 use App\Http\Requests\ReplyCreateRequest;
+use Toastr;
 
 class ReplyController extends Controller
 {
@@ -43,16 +42,12 @@ class ReplyController extends Controller
      */
     public function store(ReplyCreateRequest $request)
     {
-        // if (Auth::guard('admin')->check())
-        //     $user = Auth::guard('admin')->user();
-        // else {
-        //     $user = Auth::user();
-        // }
         $user = Auth::user();
         $reply = new Reply();
         $reply->comment_id = $request->comment_id;
         $reply->reply = $request->reply;
         $user->reply()->save($reply);
+        Toastr::success('Successfully Added', 'success');
         return redirect()->back();
     }
 
