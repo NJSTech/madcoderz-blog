@@ -39,7 +39,25 @@
 							<div class="margin-top-30">
 								<div class="d-flex justify-content-between margin-bottom-10">
 									<div class="d-inline-flex">
-										<a class="heading-uppercase" href="{{ $post->category->category_path() }}">{{ $post->category->category_name }}</a>
+										@guest('web')
+										<a class="heading-uppercase p-1 post-icon" href="javascript:void(0)" onclick="toastr.info('To add your favourite list,You need to Login first.','Info',{
+											closeButton:true,
+											progressBar:true,
+										})"><i class="icon-heart i-post"></i>{{ $post->favourite_to_users->count() }}</a>
+										@else
+										<a class="heading-uppercase p-1 post-icon " href="javascript:void(0)" onclick="document.getElementById('favourite-form-{{ $post->id }}').submit()">
+											<i class="icon-heart i-post p-1 {{ !Auth::user()->favourite_posts->where('pivot.post_id',$post->id)->count() ==0 ? 'favourite-post' :' ' }}"></i>{{ $post->favourite_to_users->count() }}
+										</a>
+										<form id="favourite-form-{{ $post->id }}" method="POST" action="{{ route('favourite.store',$post->id) }}">
+											@csrf
+										</form>
+										@endguest
+										<a class="heading-uppercase p-1 post-icon" href=""><i class="icon-eye i-post p-1"></i>{{ $post->view_count }}</a>
+									</div>
+									<div class="d-inline-flex">
+										@foreach ($post->tags as $tag)
+										<a class="heading-uppercase p-1" href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a>
+										@endforeach
 									</div>
 									<div class="d-inline-flex">
 										<span class="font-small">{{ date("M d Y",strtotime($post->created_at)) }}</span>
@@ -58,7 +76,6 @@
 						{{ $posts->links() }}
 					</div>
 					<!-- end Blog Posts -->
-					
 					@include('partials._sidebar')
 				</div><!-- end row -->
 			</div><!-- end container -->

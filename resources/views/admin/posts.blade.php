@@ -26,6 +26,8 @@
                                                         <th>Title</th>
                                                         <th>Thumb Image</th>
                                                         <th>Category</th>
+                                                        <th>Favourite</th>
+                                                        <th>Views</th>
                                                         <th>Created By</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -33,9 +35,11 @@
                                                 <tbody>
                                                     @foreach ($posts as $post)
                                                         <tr>
-                                                            <td>{{ $post->title }}</td>                                                       
+                                                            <td>{{ substr($post->title,0,20).'...' }}</td>                                                       
                                                         <td><img src="{{ $post->getFirstMediaUrl('post','thumb') }}" alt="{{ $post->title }}"></td> 
                                                             <td>{{ $post->category->category_name }}</td>                                                      
+                                                            <td>{{ $post->favourite_to_users->count() }}</td>                                                      
+                                                            <td>{{ $post->view_count }}</td>                                                      
                                                             <td>{{ $post->author->name }}</td>                                                      
                                                             <td class="action-buttons">
                                                             <a href="{{ route('posts.edit',$post->id) }}" class=""><i class="icon-pencil"></i></a>

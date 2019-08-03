@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::latest()->published()->paginate(6);
         return view('home', compact('posts'));
     }
 }
