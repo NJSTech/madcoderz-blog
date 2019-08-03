@@ -47,7 +47,7 @@ class CategoryController extends Controller
     public function show($category)
     {
         $category = Category::where('category_slug', $category)->firstOrFail();
-        $posts = $category->posts()->paginate(5);
+        $posts = $category->posts()->published()->paginate(6);
         return view('all-blog', compact('category', 'posts'));
     }
 

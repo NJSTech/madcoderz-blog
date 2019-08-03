@@ -639,10 +639,10 @@ a:active, a:focus, button:active, button:focus {
     background: #f5f5f5;
     color: #141414;
 }
-iframe {
+/* iframe {
     width: 100%;
     border: 0;
-}
+} */
 pre {
     border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 5px;
