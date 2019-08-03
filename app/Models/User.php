@@ -51,4 +51,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->morphOne(Reply::class, 'replyable');
     }
+    public function favourite_posts()
+    {
+        return $this->belongsToMany(Post::class)->withTimestamps();
+    }
 }

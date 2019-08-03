@@ -8963,14 +8963,17 @@ body.loaded:after {
 }
 .purchasenow .button-circle: hover,  
 .purchasenow .button-circle:focus  {
-    
 	background:  #499449;
-    
 	-webkit-box-shadow:  0 4px 24px 0 rgba(0, 0, 0, 0.3);
-    
 	box-shadow:  0 4px 24px 0 rgba(0, 0, 0, 0.3);
-    
 }
 .comment-box.of-reply {
     display: none;
+}
+.post-icon{
+    font-size: 18px;
+    color: #8a8080;
+}
+.favourite-post{
+    color:red;
 }

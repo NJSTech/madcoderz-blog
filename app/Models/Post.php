@@ -74,4 +74,13 @@ class Post extends Model implements HasMedia
             ->width(1200)
             ->height(650);
     }
+    // users favourite posts
+    public function favourite_to_users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
+    public function scopePublished($query)
+    {
+        return $query->where('status', 1);
+    }
 }

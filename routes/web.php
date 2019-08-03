@@ -96,3 +96,7 @@ Route::get('/contact-us', function () {
     return view('contact-us');
 });
 Route::post('/store', 'SubscribeController@store')->name('subscribe.store');
+
+Route::group(['prefix' => 'favourite', 'middleware' => 'auth:web'], function () {
+    Route::post('/{post}/store', 'FavouriteController@store')->name('favourite.store');
+});

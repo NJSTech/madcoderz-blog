@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::latest()->published()->paginate(5);
         return view('all-blog', compact('posts'));
     }
 
@@ -48,9 +49,13 @@ class PostController extends Controller
     public function show($post)
     {
         $post = Post::where('slug', $post)->firstOrFail();
+        $blogKey = 'blog_' . $post->id;
+        if (!Session::has($blogKey)) {
+            $post->increment('view_count');
+            Session::put($blogKey, 1);
+        }
         return view('single-post', compact('post'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
