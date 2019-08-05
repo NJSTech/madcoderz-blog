@@ -15,7 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('about');
+            $table->text('about')->nullable();
             $table->text('facebook')->nullable();
             $table->text('twitter')->nullable();
             $table->bigInteger('profileable_id');

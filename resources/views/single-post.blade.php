@@ -25,16 +25,30 @@
                     <div>{!! $post->body !!}</div>
                     <!-- Post Tags / Share -->
                     <div class="row margin-top-50">
-                        <div class="col-6">
-                            <h6 class="heading-uppercase">Tags</h6>
+                            <div class="col-4">
+                                    @guest('web')
+                                    <a class="heading-uppercase p-1 post-icon" href="javascript:void(0)" onclick="toastr.info('To add your favourite list,You need to Login first.','Info',{
+                                        closeButton:true,
+                                        progressBar:true,
+                                    })"><i class="icon-heart i-post"></i>{{ $post->favourite_to_users->count() }}</a>
+                                    @else
+                                    <a class="heading-uppercase p-1 post-icon " href="javascript:void(0)" onclick="document.getElementById('favourite-form-{{ $post->id }}').submit()">
+                                        <i class="icon-heart i-post p-1 {{ !Auth::user()->favourite_posts->where('pivot.post_id',$post->id)->count() ==0 ? 'favourite-post' :' ' }}"></i>{{ $post->favourite_to_users->count() }}
+                                    </a>
+                                    <form id="favourite-form-{{ $post->id }}" method="POST" action="{{ route('favourite.store',$post->id) }}">
+                                        @csrf
+                                    </form>
+                                    @endguest
+                                    <a class="heading-uppercase p-1 post-icon" href="javascript:void(0)"><i class="icon-eye i-post p-1"></i>{{ $post->view_count }}</a>
+                                </div>
+                        <div class="col-4">
                             <ul class="list-horizontal">
                                 @foreach($post->tags as $tag)
                                     <li><a class="hyperlink-1" href="{{ $tag->tag_path() }}">{{ $tag->tag_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="col-6 text-right">
-                            <h6 class="heading-uppercase">Share On</h6>
+                        <div class="col-4 text-right">
                             <ul class="list-horizontal-unstyled">
                                 <li>
                                     @php
@@ -54,9 +68,16 @@
                         <h5 class="margin-top-50 margin-bottom-30">Write a Comment</h5>
                         <form method="POST" action="{{ route('comment.store') }}" enctype="multipart/form-data" accept="UTF-8">
                             @csrf
-                            <textarea name="comment" placeholder="Message">{{ old('comment') }}</textarea>
+                            <textarea name="comment" placeholder="Message" required>{{ old('comment') }}</textarea>
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            @guest
+                            <button class="button button-lg button-grey float-right" type="button" onclick="toastr.info('To add a comment,You need to Login first.','Info',{
+                                closeButton:true,
+                                progressBar:true,
+                            })">Post Comment</button>
+                            @else
                             <button class="button button-lg button-grey float-right" type="submit">Post Comment</button>
+                            @endguest
                         </form>
                     </div>
                     <!-- Comments -->

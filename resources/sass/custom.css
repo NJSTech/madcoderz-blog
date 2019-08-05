@@ -8977,3 +8977,6 @@ body.loaded:after {
 .favourite-post{
     color:red;
 }
+.post-title p{
+    line-height: 1.4;
+}

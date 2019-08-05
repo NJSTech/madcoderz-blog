@@ -74,21 +74,22 @@
                                 </div>
                                 <div class="card-body">
                                     
-                                <form method="POST" action="{{ route('admin.profile.update',$admin->profile->id) }}" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data" accept-charset="UTF-8">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
                                         <label for="about" class="col-form-label">About:</label>
-                                        <textarea name="about" id="about" class="form-control" cols="30" rows="5" >{{ $admin->profile->about }}</textarea>
+                                        <textarea name="about" id="about" class="form-control" cols="30" rows="5" >{{ $admin->profile['about'] }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="facebook" class="col-form-label">Facebook:</label>
-                                        <input type="text" name="facebook" value="{{ $admin->profile->facebook }}" class="form-control" id="facebook" required>
+                                        <input type="text" name="facebook" value="{{ $admin->profile['facebook'] }}" class="form-control" id="facebook" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="twitter" class="col-form-label">Twitter:</label>
-                                        <input type="text" name="twitter" value="{{ $admin->profile->twitter }}" class="form-control" id="twitter" required>
+                                        <input type="text" name="twitter" value="{{ $admin->profile['twitter'] }}" class="form-control" id="twitter" required>
                                     </div>
+                                    <input type="hidden" name="profile_id" value="{{ $admin->profile['id'] }}">
                                   <button type="submit" class="btn btn-primary float-right">Save Changes</button>
                                 </form>
                                 </div>

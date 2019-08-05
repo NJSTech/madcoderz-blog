@@ -16,7 +16,7 @@
         @foreach ($populars as $popular)
         <div class="popular-post">
         <a href="{{ $popular->path() }}"><img src="{{ $popular->getFirstMediaUrl('post','thumb') }}" alt="{{ $popular->category->category_name }}"></a>
-            <div>
+            <div class="post-title">
             <p class="font-weight-normal"><a href="{{ $popular->path() }}">{{ $popular->title }}</a></p>
             <span>{{ date('M d Y',strtotime($popular->created_at)) }}</span>
             </div>

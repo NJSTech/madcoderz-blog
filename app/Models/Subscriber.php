@@ -12,4 +12,9 @@ class Subscriber extends Model
      * @var array
      */
     protected $fillable = ['email'];
+
+    public function scopeNew($query)
+    {
+        return $query->orderBy('created_at', 'desc')->take(15);
+    }
 }

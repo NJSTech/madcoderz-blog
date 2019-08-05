@@ -64,7 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
     Route::get('/{admin}/edit', 'Admins\AdminController@edit')->name('admin.profile');
     Route::put('/{admin}', 'Admins\AdminController@update')->name('admin.update');
-    Route::put('/{profile}/update', 'Admins\AdminController@profileUpdate')->name('admin.profile.update');
+    Route::put('/store/update', 'Admins\AdminController@profileUpdate')->name('admin.profile.update');
     Route::get('/passwordChange', 'Admins\AdminController@changePassword')->name('admin.change.password');
     Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request');
 });
@@ -99,4 +99,11 @@ Route::post('/store', 'SubscribeController@store')->name('subscribe.store');
 
 Route::group(['prefix' => 'favourite', 'middleware' => 'auth:web'], function () {
     Route::post('/{post}/store', 'FavouriteController@store')->name('favourite.store');
+});
+Route::group(['prefix' => 'users', 'middleware' => 'auth:web'], function () {
+    Route::get('/change-password', 'UserController@showResetForm')->name('user.change.password');
+    Route::post('/', 'UserController@resetPassword')->name('user.password.reset.request');
+    Route::get('/{user}/show', 'UserController@show')->name('user.profile');
+    Route::put('/{user}/update', 'UserController@update')->name('user.update');
+    Route::put('/update', 'UserController@profileUpdate')->name('user.profile.update');
 });
