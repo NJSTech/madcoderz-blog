@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -39,7 +41,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     // Get the profile value for user
     public function profile()
     {
-        return $this->morphOne('App\Models\Profile', 'profileable');
+        return $this->morphOne(Profile::class, 'profileable');
     }
     // user comment
     public function comment()
@@ -54,5 +56,16 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function favourite_posts()
     {
         return $this->belongsToMany(Post::class)->withTimestamps();
+    }
+    // register media library collection
+    // public function registerMediaCollections()
+    // {
+    //     $this->addMediaCollection('profile');
+    // }
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(368)
+            ->height(232);
     }
 }

@@ -52,7 +52,7 @@
 											@csrf
 										</form>
 										@endguest
-										<a class="heading-uppercase p-1 post-icon" href=""><i class="icon-eye i-post p-1"></i>{{ $post->view_count }}</a>
+										<a class="heading-uppercase p-1 post-icon" href="javascript:void(0)"><i class="icon-eye i-post p-1"></i>{{ $post->view_count }}</a>
 									</div>
 									<div class="d-inline-flex">
 										@foreach ($post->tags as $tag)

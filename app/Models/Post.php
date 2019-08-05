@@ -87,4 +87,8 @@ class Post extends Model implements HasMedia
     {
         return $query->orderBy('view_count', 'desc')->take(5);
     }
+    public function scopeNew($query)
+    {
+        return $query->orderBy('created_at', 'desc')->take(15);
+    }
 }

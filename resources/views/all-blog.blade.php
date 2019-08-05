@@ -23,6 +23,22 @@
 							</div>
 							<div class="margin-top-30">
 								<div class="d-flex justify-content-between margin-bottom-10">
+                                        <div class="d-inline-flex">
+                                                @guest('web')
+                                                <a class="heading-uppercase p-1 post-icon" href="javascript:void(0)" onclick="toastr.info('To add your favourite list,You need to Login first.','Info',{
+                                                    closeButton:true,
+                                                    progressBar:true,
+                                                })"><i class="icon-heart i-post"></i>{{ $post->favourite_to_users->count() }}</a>
+                                                @else
+                                                <a class="heading-uppercase p-1 post-icon " href="javascript:void(0)" onclick="document.getElementById('favourite-form-{{ $post->id }}').submit()">
+                                                    <i class="icon-heart i-post p-1 {{ !Auth::user()->favourite_posts->where('pivot.post_id',$post->id)->count() ==0 ? 'favourite-post' :' ' }}"></i>{{ $post->favourite_to_users->count() }}
+                                                </a>
+                                                <form id="favourite-form-{{ $post->id }}" method="POST" action="{{ route('favourite.store',$post->id) }}">
+                                                    @csrf
+                                                </form>
+                                                @endguest
+                                                <a class="heading-uppercase p-1 post-icon" href="javascript:void(0)"><i class="icon-eye i-post p-1"></i>{{ $post->view_count }}</a>
+                                            </div>
 									<div class="d-inline-flex">
                                         <ul class="list-horizontal">
                                             @foreach($post->tags as $tag)

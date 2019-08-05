@@ -41,11 +41,11 @@
 										</div>
 									</li>
 									<li class="main pb-3">
-										<a href="">
+									<a href="{{ route('user.change.password') }}">
 											<i class="icon-key mr-2"></i> Change Password</a>
 									</li>
 									<li class="main pb-3">
-										<a href="">
+									<a href="{{ route('user.profile',Auth::user()->id) }}">
 											<i class="icon-user mr-2"></i> Profile</a>
 									</li>
 									<li class="main pb-3">

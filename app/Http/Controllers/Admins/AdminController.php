@@ -11,6 +11,11 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Hash;
 use Auth;
 use App\Http\Requests\AdminResetPasswordRequest;
+use Toastr;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Subscriber;
 
 class AdminController extends Controller
 {
@@ -31,7 +36,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $posts = Post::all();
+        $users = User::all();
+        $subscribers = Subscriber::all();
+        return view('admin.dashboard', compact('posts', 'users', 'categories', 'subscribers'));
     }
     public function store(Request $request)
     {
@@ -52,10 +60,21 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('status', 'Successfully Updated');
     }
-    public function profileUpdate(Profile $profile, ProfileUpdateRequest $request)
+    public function profileUpdate(ProfileUpdateRequest $request)
     {
-        $profile->update($request->all());
-        return redirect()->back()->with('status', 'Successfully Updated');
+        $admin = Auth::guard('admin')->user();
+        if ($admin->profile) {
+            $profile = Profile::find($request->profile_id);
+            $profile->update($request->all());
+        } else {
+            $profile = new Profile();
+            $profile->about = $request->about;
+            $profile->facebook = $request->facebook;
+            $profile->twitter = $request->twitter;
+            $admin->profile()->save($profile);
+        }
+        Toastr::success('Successfully Updated', 'success');
+        return redirect()->back();
     }
     public function changePassword()
     {

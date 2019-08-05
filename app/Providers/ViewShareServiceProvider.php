@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
 use View;
+use App\Models\Subscriber;
 
 class ViewShareServiceProvider extends ServiceProvider
 {
@@ -33,5 +34,9 @@ class ViewShareServiceProvider extends ServiceProvider
         View::share('tags', $tags);
         $populars = Post::popular()->get();
         View::share('populars', $populars);
+        $newposts = Post::new()->get();
+        View::share('newposts', $newposts);
+        $newsubscribers = Subscriber::new()->get();
+        View::share('newsubscribers', $newsubscribers);
     }
 }
