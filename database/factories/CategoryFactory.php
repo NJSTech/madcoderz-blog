@@ -7,6 +7,6 @@ use App\Models\Category;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'category_name' => $faker->colorName,
+        'category_name' => $faker->company,
     ];
 });

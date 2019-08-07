@@ -1,3 +1,6 @@
+// Author: Nawjesh Soyeb
+// Title:Subscrite destroy
+// create at:28/07/2019
 $(document).on('click', '.subscribe-destroy', function (e) {
     e.preventDefault();
     var id = $(this).data('id');

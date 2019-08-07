@@ -17,13 +17,13 @@
 							</a>
 						</div>
 						</div>
+					
 					@endforeach
 				</div>
 				</div><!-- end row -->
 			</div><!-- end container -->
 		</div>
 		<!-- end Category section -->
-
 		<div class="section">
 			<div class="container">
 				<div class="row col-spacing-50">

@@ -30,15 +30,12 @@ mix.sass('resources/sass/app.scss', 'public/css/app.css')
             'node_modules/sweetalert2/dist/sweetalert2.min.js', 
             'node_modules/select2/dist/js/select2.min.js',
       ],'public/js/all.js')
-      
       .js([
             'resources/js/custom.js',
-            'resources/js/home.js',
             'resources/js/comment.js'
       ],'public/js/custom.js')
       .js([
             'resources/js/admin-script.js',
-            'resources/js/dashboard.js',
             'resources/js/category.js',
             'resources/js/tag.js',
             'resources/js/post-destroy.js',

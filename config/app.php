@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel Complete Blog Project'),
+    'name' => env('APP_NAME', 'MadCoderz Blog'),
 
     /*
     |--------------------------------------------------------------------------

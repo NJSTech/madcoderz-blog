@@ -1,3 +1,6 @@
+// Author: Nawjesh Soyeb
+// Title:Post create Ckeditor configur with laravel file manager
+// create at:27/07/2019
 $(function(){
     "use strict";
     
