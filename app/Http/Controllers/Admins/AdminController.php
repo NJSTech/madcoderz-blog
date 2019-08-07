@@ -14,7 +14,6 @@ use App\Http\Requests\AdminResetPasswordRequest;
 use Toastr;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Category;
 use App\Models\Subscriber;
 
 class AdminController extends Controller

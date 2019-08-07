@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Http\Requests\UserUpdateRequest;
 use Toastr;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class UserController extends Controller
 {
@@ -61,7 +62,8 @@ class UserController extends Controller
         Toastr::success('Successfully Updated', 'success');
         return redirect()->back();
     }
-    public function profileUpdate(Request $request)
+    // profile update information
+    public function profileUpdate(ProfileUpdateRequest $request)
     {
         $user = Auth::user();
         if ($user->profile) {

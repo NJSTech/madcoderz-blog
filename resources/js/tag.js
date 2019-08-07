@@ -1,3 +1,6 @@
+// Author: Nawjesh Soyeb
+// Title:Tag destroy
+// create at:26/07/2019
 $(function(){
     "use strict";
     $(document).on('click', '.tag-destroy', function (e) {

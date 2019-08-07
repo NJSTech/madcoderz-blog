@@ -20,7 +20,7 @@ class CreateRepliesTable extends Migration
             $table->unsignedBigInteger('replyable_id');
             $table->string('replyable_type');
             $table->timestamps();
-            $table->foreign('comment_id')->references('id')->on('comments');
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
         });
     }
 

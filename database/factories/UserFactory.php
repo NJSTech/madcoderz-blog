@@ -31,8 +31,8 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(Profile::class, function (Faker $faker) {
     return [
-        'userable_type' => 'User',
-        'userable_id' => function () {
+        'profileable_type' => 'User',
+        'profileable_id' => function () {
             return factory('App\Models\User')->create()->id;
         },
         'about' => $faker->paragraph,

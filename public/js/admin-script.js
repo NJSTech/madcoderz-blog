@@ -105,44 +105,12 @@ $(function () {
     borderRadius: 0,
     size: "5px",
     alwaysVisible: !0
-  }), // $(".table-body").slimScroll({
-  //     height: "460px",
-  //     color: "rgb(236, 230, 230)",
-  //     disableFadeOut: !0,
-  //     borderRadius: 0,
-  //     size: "5px",
-  //     alwaysVisible: !0
-  // }),
-  $(".quicknote").slimScroll({
-    height: "350px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "4px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
   }), $(".inbox-chat").slimScroll({
     height: "290px",
     color: "rgb(236, 230, 230)",
     disableFadeOut: !0,
     borderRadius: 0,
     size: "2px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
-  }), $(".message-chat-list").slimScroll({
-    height: "650px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "0px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
-  }), $(".chat-window").slimScroll({
-    height: "650px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "0px",
     allowPageScroll: !0,
     alwaysVisible: !1
   }), $(".sidebar-toggle").on("click", function () {
@@ -212,24 +180,6 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-//title:Demo code for dashboard
-$(function () {
-  /* ChartJS
-   * -------
-   * Data and config for chartjs
-   */
-  'use strict';
-});
-
-/***/ }),
-
 /***/ "./resources/js/post-destroy.js":
 /*!**************************************!*\
   !*** ./resources/js/post-destroy.js ***!
@@ -276,6 +226,9 @@ $(document).on('click', '.post-destroy', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// Author: Nawjesh Soyeb
+// Title:Subscrite destroy
+// create at:28/07/2019
 $(document).on('click', '.subscribe-destroy', function (e) {
   e.preventDefault();
   var id = $(this).data('id');
@@ -317,6 +270,9 @@ $(document).on('click', '.subscribe-destroy', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// Author: Nawjesh Soyeb
+// Title:Tag destroy
+// create at:26/07/2019
 $(function () {
   "use strict";
 
@@ -353,14 +309,13 @@ $(function () {
 /***/ }),
 
 /***/ 3:
-/*!************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ***!
-  \************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ***!
+  \********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-script.js */"./resources/js/admin-script.js");
-__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
