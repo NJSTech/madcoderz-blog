@@ -86,6 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./resources/js/comment.js":
+/*!*********************************!*\
+  !*** ./resources/js/comment.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Author: Nawjesh Soyeb
+// Title:Comment reply
+// create at:26/07/2019
+$(document).ready(function () {
+  $(".show-reply-input").click(function (event) {
+    event.preventDefault();
+    var reply = $(this).parent();
+    reply.children(".comment-box.of-reply").fadeIn();
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/custom.js":
 /*!********************************!*\
   !*** ./resources/js/custom.js ***!
@@ -430,26 +450,15 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/home.js":
-/*!******************************!*\
-  !*** ./resources/js/home.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ 2:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/custom.js ./resources/js/home.js ***!
-  \*************************************************************/
+/*!****************************************************************!*\
+  !*** multi ./resources/js/custom.js ./resources/js/comment.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\custom.js */"./resources/js/custom.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\home.js */"./resources/js/home.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\comment.js */"./resources/js/comment.js");
 
 
 /***/ })

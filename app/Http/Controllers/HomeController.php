@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,13 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $avatars = auth()->user()->getMedia('profile')->first();
-        return view('home', compact('avatars'));
-    }
-    public function store(Request $request)
-    {
-        $user = auth()->user();
-        $user->addMedia($request->avatar)->toMediaCollection('profile');
-        return redirect()->back();
+        $posts = Post::latest()->published()->paginate(6);
+        return view('home', compact('posts'));
     }
 }

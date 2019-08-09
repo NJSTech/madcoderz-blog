@@ -11,7 +11,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['comment', 'post_id', 'userable_id', 'userable_type'];
+    protected $fillable = ['comment', 'post_id', 'comment_id', 'comment_type'];
     /**
      * Get all of the owning commentable models.
      */
@@ -24,6 +24,6 @@ class Comment extends Model
      */
     public function replies()
     {
-        return $this->hasMany('App\Model\Reply');
+        return $this->hasMany(Reply::class);
     }
 }

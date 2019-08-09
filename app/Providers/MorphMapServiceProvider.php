@@ -25,8 +25,11 @@ class MorphMapServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'User' => \App\User::class,
-            'Admin' => \App\Admin::class,
+            'User' => \App\Models\User::class,
+            'Admin' => \App\Models\Admin::class,
+            'Category' => \App\Models\Category::class,
+            'Post' => \App\Models\Post::class,
+            'Profile' => \App\Models\Profile::class,
         ]);
     }
 }

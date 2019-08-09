@@ -32,4 +32,19 @@ class Category extends Model implements HasMedia
     {
         return $this->hasMany(Post::class);
     }
+    //create category path
+    public function category_path()
+    {
+        return '/categories/' . $this->category_slug;
+    }
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('category');
+        $this->addMediaConversion('thumb')
+            ->width(300)
+            ->height(300);
+        $this->addMediaConversion('banner')
+            ->width(1200)
+            ->height(650);
+    }
 }

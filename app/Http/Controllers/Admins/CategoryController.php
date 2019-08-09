@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Admins;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category-create');
     }
 
     /**
@@ -35,9 +41,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
-        return $request->all();
+        $category = Category::create($request->all());
+        $category->addMedia($request->image)->toMediaCollection('category');
+        return redirect()->back()->with('status', 'Successfully Created');
     }
 
     /**
@@ -57,9 +65,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category-update', compact('category'));
     }
 
     /**
@@ -69,9 +77,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Category $category, CategoryUpdateRequest $request)
     {
-        //
+        $category->update($request->all());
+        if ($request->hasFile('image')) {
+            $category->media()->delete();
+            $category->addMediaFromRequest('image')->toMediaCollection('category');
+        }
+        return redirect()->back()->with('status', 'Successfully Updated');
     }
 
     /**
@@ -80,8 +93,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }

@@ -105,43 +105,12 @@ $(function () {
     borderRadius: 0,
     size: "5px",
     alwaysVisible: !0
-  }), $(".table-body").slimScroll({
-    height: "460px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "5px",
-    alwaysVisible: !0
-  }), $(".quicknote").slimScroll({
-    height: "350px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "4px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
   }), $(".inbox-chat").slimScroll({
     height: "290px",
     color: "rgb(236, 230, 230)",
     disableFadeOut: !0,
     borderRadius: 0,
     size: "2px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
-  }), $(".message-chat-list").slimScroll({
-    height: "650px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "0px",
-    allowPageScroll: !0,
-    alwaysVisible: !1
-  }), $(".chat-window").slimScroll({
-    height: "650px",
-    color: "rgb(236, 230, 230)",
-    disableFadeOut: !0,
-    borderRadius: 0,
-    size: "0px",
     allowPageScroll: !0,
     alwaysVisible: !1
   }), $(".sidebar-toggle").on("click", function () {
@@ -169,120 +138,204 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
+/***/ "./resources/js/category.js":
+/*!**********************************!*\
+  !*** ./resources/js/category.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//title:Demo code for dashboard
 $(function () {
-  /* ChartJS
-   * -------
-   * Data and config for chartjs
-   */
-  'use strict';
+  "use strict";
 
-  var doughnutPieData = {
-    datasets: [{
-      data: [30, 40, 30],
-      backgroundColor: ['rgba(75, 192, 192, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(153, 102, 255, 0.5)'],
-      borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(153, 102, 255, 1)']
-    }],
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: ['New Order', 'Delivery Processing', 'Order Complete']
-  };
-  var doughnutPieOptions = {
-    responsive: true,
-    legend: {
-      labels: {
-        fontColor: "#8f8f8f",
-        fontSize: 12
+  $(document).on('click', '.category-destroy', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var url = 'categories/destroy/' + id;
+    Swal.fire({
+      title: 'Are you sure?',
+      // text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        $.ajax({
+          type: "get",
+          url: url,
+          // data: {id:id},
+          success: function success(data) {
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        });
       }
-    },
-    animation: {
-      animateScale: true,
-      animateRotate: true
-    }
-  };
-  var areaData = {
-    labels: ["2013", "2014", "2015", "2016", "2017", "2018"],
-    datasets: [{
-      label: 'Sales',
-      data: [1, 19, 7, 11, 4, 3],
-      backgroundColor: ['rgba(54, 162, 235, 0.5)'],
-      borderColor: ['rgba(54, 162, 235, 1)'],
-      borderWidth: 1,
-      fill: true // 3: no fill
-
-    }, {
-      label: 'Expenses',
-      data: [12, 17, 4, 9, 3, 9],
-      backgroundColor: ['rgba(153, 102, 255, 0.5)'],
-      borderColor: ['rgba(153, 102, 255, 1)'],
-      borderWidth: 1,
-      fill: true // 3: no fill
-
-    }]
-  };
-  var areaOptions = {
-    legend: {
-      labels: {
-        fontColor: "#8f8f8f",
-        fontSize: 12
-      }
-    },
-    plugins: {
-      filler: {
-        propagate: true
-      }
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          color: '#f5f6f7'
-        }
-      }],
-      yAxes: [{
-        gridLines: {
-          color: '#f5f6f7'
-        }
-      }]
-    } // Get context with jQuery - using jQuery's .get() method.
-
-  };
-
-  if ($("#doughnutchart").length) {
-    var doughnutChartCanvas = $("#doughnutchart").get(0).getContext("2d");
-    var doughnutChart = new Chart(doughnutChartCanvas, {
-      type: 'pie',
-      data: doughnutPieData,
-      options: doughnutPieOptions
     });
-  }
-
-  if ($("#areaChart").length) {
-    var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-    var areaChart = new Chart(areaChartCanvas, {
-      type: 'line',
-      data: areaData,
-      options: areaOptions
-    });
-  }
+  });
 });
 
 /***/ }),
 
+/***/ "./resources/js/post-destroy.js":
+/*!**************************************!*\
+  !*** ./resources/js/post-destroy.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+<<<<<<< HEAD
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\post-destroy.js'");
+=======
+$('#tag-multiple').select2();
+$(document).on('click', '.post-destroy', function (e) {
+  e.preventDefault();
+  var id = $(this).data('id');
+  var url = 'posts/destroy/' + id;
+  Swal.fire({
+    title: 'Are you sure?',
+    // text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      $.ajax({
+        type: "GET",
+        url: url,
+        // data: {id:id},
+        success: function success(response) {
+          if (response.status == 'success') {
+            $(".flashmessage").fadeIn('fast').delay(3000).fadeOut('fast').text(response.message);
+          }
+        }
+      });
+    }
+  });
+});
+>>>>>>> nj-dev
+
+/***/ }),
+
+/***/ "./resources/js/subscribe.js":
+/*!***********************************!*\
+  !*** ./resources/js/subscribe.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Author: Nawjesh Soyeb
+// Title:Subscrite destroy
+// create at:28/07/2019
+$(document).on('click', '.subscribe-destroy', function (e) {
+  e.preventDefault();
+  var id = $(this).data('id');
+  var url = 'subscribes/destroy/' + id;
+  Swal.fire({
+    title: 'Are you sure?',
+    // text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+      $.ajax({
+        type: "GET",
+        url: url,
+        // data: {id:id},
+        success: function success(response) {
+          if (response.status == 'success') {
+            $(".flashmessage").fadeIn('fast').delay(2000).fadeOut('fast').text(response.message);
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        }
+      });
+    }
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/tag.js":
+/*!*****************************!*\
+  !*** ./resources/js/tag.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Author: Nawjesh Soyeb
+// Title:Tag destroy
+// create at:26/07/2019
+$(function () {
+  "use strict";
+
+  $(document).on('click', '.tag-destroy', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var url = 'tags/destroy/' + id;
+    Swal.fire({
+      title: 'Are you sure?',
+      // text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+      if (result.value) {
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        $.ajax({
+          type: "GET",
+          url: url,
+          // data: {id:id},
+          success: function success(data) {
+            setTimeout(function () {
+              location.reload();
+            }, 2000);
+          }
+        });
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/user.js":
+/*!******************************!*\
+  !*** ./resources/js/user.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\user.js'");
+
+/***/ }),
+
 /***/ 3:
-/*!************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/dashboard.js ***!
-  \************************************************************************/
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ./resources/js/user.js ***!
+  \*******************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-script.js */"./resources/js/admin-script.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\dashboard.js */"./resources/js/dashboard.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\subscribe.js */"./resources/js/subscribe.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\user.js */"./resources/js/user.js");
 
 
 /***/ })

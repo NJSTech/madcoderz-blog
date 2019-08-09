@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\AdminResetPasswordNotification;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Notifications\AdminEmailVerify;
 
 class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -17,7 +18,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'email_verified_at', 'job_title'];
+    protected $fillable = ['name', 'email', 'password', 'email_verified_at', 'job_title', 'status'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,12 +40,12 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     // admin posts
     public function posts()
     {
-        return $this->morphMany('App\Models\Post', 'postable');
+        return $this->hasMany(Post::class);
     }
     // Get the profile value for admin
     public function profile()
     {
-        return $this->morphOne('App\Models\Profile', 'profileable');
+        return $this->morphOne(Profile::class, 'profileable');
     }
     /**
      * Send the password reset notification.
@@ -55,5 +56,28 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+    // register media library collection
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('profile');
+        $this->addMediaConversion('thumb')
+            ->width(300)
+            ->height(300);
+    }
+    // admin comment
+    public function comment()
+    {
+        return $this->morphOne(Comment::class, 'commentable');
+    }
+    // admin reply
+    public function reply()
+    {
+        return $this->morphOne(Reply::class, 'replyable');
+    }
+    public function sendEmailVerificationNotification()
+    {
+        // $this->notify(new Notifications\VerifyEmail);
+        $this->notify(new AdminEmailVerify());
     }
 }

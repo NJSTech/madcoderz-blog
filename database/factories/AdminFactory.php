@@ -19,8 +19,8 @@ $factory->define(Admin::class, function (Faker $faker) {
 });
 $factory->define(Profile::class, function (Faker $faker) {
     return [
-        'userable_type' => 'Admin',
-        'userable_id' => function () {
+        'profileable_type' => 'Admin',
+        'profileable_id' => function () {
             return factory('App\Models\Admin')->create()->id;
         },
         'about' => $faker->paragraph,

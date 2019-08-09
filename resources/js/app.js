@@ -5,7 +5,12 @@
  */
 
 require('./bootstrap');
-
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+window.Swal = require('sweetalert2');
+require('metisMenu');
+require('sweetalert2');
+require('select2');
 // window.Vue = require('vue');
 
 /**

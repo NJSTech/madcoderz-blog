@@ -1,7 +1,7 @@
 $(function() {
     "use strict";
     $(function() {
-        $("#menu").metisMenu()
+        $("#menu").metisMenu();
     }), $(".scroolbar-notification").slimScroll({
         height: "300px",
         color: "rgb(236, 230, 230)",
@@ -9,22 +9,8 @@ $(function() {
         borderRadius: 0,
         size: "5px",
         alwaysVisible: !0
-    }), $(".table-body").slimScroll({
-        height: "460px",
-        color: "rgb(236, 230, 230)",
-        disableFadeOut: !0,
-        borderRadius: 0,
-        size: "5px",
-        alwaysVisible: !0
-    }), $(".quicknote").slimScroll({
-        height: "350px",
-        color: "rgb(236, 230, 230)",
-        disableFadeOut: !0,
-        borderRadius: 0,
-        size: "4px",
-        allowPageScroll: !0,
-        alwaysVisible: !1
-    }), $(".inbox-chat").slimScroll({
+    }), 
+     $(".inbox-chat").slimScroll({
         height: "290px",
         color: "rgb(236, 230, 230)",
         disableFadeOut: !0,
@@ -32,23 +18,8 @@ $(function() {
         size: "2px",
         allowPageScroll: !0,
         alwaysVisible: !1
-    }), $(".message-chat-list").slimScroll({
-        height: "650px",
-        color: "rgb(236, 230, 230)",
-        disableFadeOut: !0,
-        borderRadius: 0,
-        size: "0px",
-        allowPageScroll: !0,
-        alwaysVisible: !1
-    }), $(".chat-window").slimScroll({
-        height: "650px",
-        color: "rgb(236, 230, 230)",
-        disableFadeOut: !0,
-        borderRadius: 0,
-        size: "0px",
-        allowPageScroll: !0,
-        alwaysVisible: !1
-    }), $(".sidebar-toggle").on("click", function() {
+    }), 
+    $(".sidebar-toggle").on("click", function() {
         var i = window.innerWidth;
         i > 990 ? $("#app").removeClass("mini-app") : i < 990 && $("#app").toggleClass("mini-app")
     }), $(function() {

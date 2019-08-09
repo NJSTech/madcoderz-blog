@@ -4943,3 +4943,15 @@ span.switch.switch-label.selected {
     bottom: 0 !important;
     box-shadow: 0 -3px 2px 0 rgba(0, 0, 0, .04)
 }
+.flashmessage {
+    position: fixed;
+    top: 50px;
+    right: 25px;
+    padding: 15px;
+    z-index: 9999999;
+    background-color: #0aa698;
+    color: #fff;
+    max-width: 350px;
+    height: auto;
+    display: none;
+}
