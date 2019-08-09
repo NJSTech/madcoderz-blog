@@ -6,9 +6,9 @@
                 <div class="main-logo m-0 p-0">
                     <a href="{{ route('admin.dashboard') }}" class="logo">
                         <span>
-                            <img src="http://www.madcoderz.com/madol/asset/images/logo-color.svg" alt="madol">
+                        <img src="{{ asset('img/logo.svg') }}" alt="madcoderz-blog">
                         </span>
-                        <i><img src="http://www.madcoderz.com/madol/asset/images/icon-logo.svg" alt="madol"></i>
+                        <i><img src="{{ asset('img/logo.svg') }}" alt="madcoderz-blog"></i>
                     </a>
                 </div>
             </div>
@@ -31,34 +31,6 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav d-flex flex-row nav-right pl-0 mb-0 m-20 order-2">
-                    <li class="dropdown notification-list d-none d-sm-block">
-                        <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            class="nav-link arrow-none">
-                            <i class="icon-bell notification-icon position-relative"></i>
-                            <span class="badge badge-pill badge-info">0</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-box hw45">
-                            <div class="scroolbar-notification">
-                                <div class="d-flex flex-row p-3">
-                                    <a href="javascript:void(0)">
-                                        <img src="http://www.madcoderz.com/madol/asset/images/user/thumb/default-thumb.jpg"
-                                            alt="Notification" class="list-thumbnail rounded-circle">
-                                    </a>
-                                    <div class="pl-2">
-                                        <a href="javascript:void(0)">
-                                            <p class="mb-1 text-medium">Jhon Doe just sent a new comment!</p>
-                                            <p class="text-muted text-small mb-0">09.07.2018 11.45</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <a href="javascript:void(0)" class="text-primary">
-                                    <p class="pt-3 text-uppercase">View All</p>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
                     <li class="dropdown nav-profile hw35 pr-3">
                         <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             class="nav-link arrow-none">

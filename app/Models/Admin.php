@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\AdminResetPasswordNotification;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Notifications\AdminEmailVerify;
 
 class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
 {
@@ -39,7 +40,7 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     // admin posts
     public function posts()
     {
-        return $this->hasMany(App\Models\Post::class);
+        return $this->hasMany(Post::class);
     }
     // Get the profile value for admin
     public function profile()
@@ -73,5 +74,10 @@ class Admin extends Authenticatable implements MustVerifyEmail, HasMedia
     public function reply()
     {
         return $this->morphOne(Reply::class, 'replyable');
+    }
+    public function sendEmailVerificationNotification()
+    {
+        // $this->notify(new Notifications\VerifyEmail);
+        $this->notify(new AdminEmailVerify());
     }
 }

@@ -13,7 +13,7 @@
                             <div class="card shadow-none">
                                 <div class="card-body widget-aristocrat">
                                     <div class="d-flex flex-row">
-                                        <div class="round align-self-center round-aristocrat"><i class="icon-wallet"></i></div>
+                                        <div class="round align-self-center round-aristocrat"><i class="icon-note"></i></div>
                                         <div class="ml-3 align-self-center">
                                             <h5 class="mb-0 card-text">{{ $posts->count() }}</h5>
                                             <h6 class="text-muted mb-0">Posts</h6>
@@ -39,7 +39,7 @@
                             <div class="card shadow-none">
                                 <div class="card-body widget-success">
                                     <div class="d-flex flex-row">
-                                        <div class="round align-self-center round-success"><i class="icon-bag"></i></div>
+                                        <div class="round align-self-center round-success"><i class="icon-notebook"></i></div>
                                         <div class="ml-3 align-self-center">
                                             <h5 class="mb-0 card-text">{{ $categories->count() }}</h5>
                                             <h6 class="text-muted mb-0">Categories</h6>
@@ -52,7 +52,7 @@
                             <div class="card shadow-none">
                                 <div class="card-body widget-warning">
                                     <div class="d-flex flex-row">
-                                        <div class="round align-self-center round-warning"><i class="icon-chart"></i></div>
+                                        <div class="round align-self-center round-warning"><i class="icon-envelope"></i></div>
                                         <div class="ml-3 align-self-center">
                                         <h5 class="mb-0 card-text">{{ $subscribers->count() }}</h5>
                                             <h6 class="text-muted mb-0">Subscribers</h6>
@@ -94,7 +94,7 @@
                                                             <td>{{ $post->favourite_to_users->count() }}</td>
                                                             <td>{{ $post->view_count }}</td>
                                                             <td>{{ $post->author->name }}</td>
-                                                            <td class="action-buttons"><a href="javascript:void(0)"><i class="icon-eye"></i></a></td>
+                                                            <td class="action-buttons"><a href="{{ route('posts.edit',$post->id) }}" class=""><i class="icon-pencil"></i></a></td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

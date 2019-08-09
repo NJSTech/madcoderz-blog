@@ -47,8 +47,9 @@ class UserController extends Controller
         $user->update();
         return redirect()->back()->with("status", "Password Changed Successfully !");
     }
-    public function show(User $user)
+    public function show()
     {
+        $user = Auth::user();
         return view('profile', compact('user'));
     }
     // user update information

@@ -15,6 +15,8 @@ use Toastr;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Subscriber;
+use App\Notifications\AdminEmailVerify;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -39,12 +41,6 @@ class AdminController extends Controller
         $users = User::all();
         $subscribers = Subscriber::all();
         return view('admin.dashboard', compact('posts', 'users', 'categories', 'subscribers'));
-    }
-    public function store(Request $request)
-    {
-        $user = auth()->user();
-        $user->addMedia($request->avatar)->toMediaCollection('profile');
-        return redirect()->back();
     }
     public function edit(Admin $admin)
     {
@@ -91,5 +87,10 @@ class AdminController extends Controller
         $admin->update();
 
         return redirect()->back()->with("status", "Password Changed Successfully !");
+    }
+    // admin create page
+    public function create()
+    {
+        return view('admin.admin-create');
     }
 }
