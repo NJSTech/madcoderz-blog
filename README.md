@@ -60,7 +60,7 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 
 ## Admin panel
 
-![mad-blog](https://ibb.co/2KtHgvr)
+![mad-blog admin panel](https://imgur.com/YqMJ3JA)
 
 ## License
 
