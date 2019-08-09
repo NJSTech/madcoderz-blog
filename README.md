@@ -57,8 +57,11 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * Push to remote
 * When work is tested,done or ready, push to remote
 * Merge to dev
-##Admin panel
-![mad-blog](https://ibb.co/kqT5zJ3"Logo Title Text 1")
+
+## Admin panel
+
+![mad-blog](https://ibb.co/2KtHgvr)
+
 ## License
 
 madCoderz Blog is open sourced software licensed under the [MIT license](https://opensourse.org/licenses/MIT);
