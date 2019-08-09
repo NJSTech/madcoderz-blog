@@ -312,10 +312,21 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/js/user.js":
+/*!******************************!*\
+  !*** ./resources/js/user.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open 'F:\\madcoderz\\htdocs\\madcoderz-blog\\resources\\js\\user.js'");
+
+/***/ }),
+
 /***/ 3:
-/*!********************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin-script.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ***!
-  \********************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin-script.js ./resources/js/category.js ./resources/js/tag.js ./resources/js/post-destroy.js ./resources/js/subscribe.js ./resources/js/user.js ***!
+  \*******************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -323,7 +334,8 @@ __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\admin-sc
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\category.js */"./resources/js/category.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\tag.js */"./resources/js/tag.js");
 __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\post-destroy.js */"./resources/js/post-destroy.js");
-module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\subscribe.js */"./resources/js/subscribe.js");
+__webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\subscribe.js */"./resources/js/subscribe.js");
+module.exports = __webpack_require__(/*! F:\madcoderz\htdocs\madcoderz-blog\resources\js\user.js */"./resources/js/user.js");
 
 
 /***/ })

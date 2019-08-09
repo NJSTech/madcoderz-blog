@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 
-Auth::routes(['verify' => true]);
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
@@ -52,15 +50,16 @@ Route::get('/contact-us', function () {
 Route::post('/store', 'SubscribeController@store')->name('subscribe.store');
 
 Route::group(['prefix' => 'favourite', 'middleware' => 'auth:web'], function () {
-    Route::post('/{post}/store', 'FavouriteController@store')->name('favourite.store');
+    Route::post('/{post}/store', 'FavouriteController@store')->name('favourite.store')->middleware('verified');
 });
 Route::group(['prefix' => 'users', 'middleware' => 'auth:web'], function () {
-    Route::get('/change-password', 'UserController@showResetForm')->name('user.change.password');
-    Route::post('/', 'UserController@resetPassword')->name('user.password.reset.request');
-    Route::get('/{user}/show', 'UserController@show')->name('user.profile');
-    Route::put('/{user}/update', 'UserController@update')->name('user.update');
-    Route::put('/update', 'UserController@profileUpdate')->name('user.profile.update');
+    Route::get('/change-password', 'UserController@showResetForm')->name('user.change.password')->middleware('verified');
+    Route::post('/', 'UserController@resetPassword')->name('user.password.reset.request')->middleware('verified');
+    Route::get('/profile', 'UserController@show')->name('user.profile')->middleware('verified');
+    Route::put('/{user}/update', 'UserController@update')->name('user.update')->middleware('verified');
+    Route::put('/update', 'UserController@profileUpdate')->name('user.profile.update')->middleware('verified');
 });
+Auth::routes(['verify' => true]);
 // define admin panel route
 Route::prefix('admin')->group(function () {
     Route::get('/loginForm', 'Auth\AdminLoginController@ShowLoginForm')->name('admin.login');
@@ -105,10 +104,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
         Route::get('/', 'Admins\SubscribeController@index')->name('subscribe.index');
         Route::get('destroy/{subcribe}', 'Admins\SubscribeController@destroy')->name('subscribe.destroy');
     });
-    Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard');
-    Route::get('/{admin}/edit', 'Admins\AdminController@edit')->name('admin.profile');
-    Route::put('/{admin}', 'Admins\AdminController@update')->name('admin.update');
-    Route::put('/store/update', 'Admins\AdminController@profileUpdate')->name('admin.profile.update');
-    Route::get('/passwordChange', 'Admins\AdminController@changePassword')->name('admin.change.password');
-    Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request');
+    // define subscribers route
+    Route::prefix('users')->group(function () {
+        Route::get('/', 'Admins\UserController@index')->name('admin.users.index');
+        Route::post('/userStatus', 'Admins\UserController@userStatus')->name('user.status.update');
+    });
+    Route::get('/dashboard', 'Admins\AdminController@index')->name('admin.dashboard')->middleware('verified');
+    Route::get('/{admin}/edit', 'Admins\AdminController@edit')->name('admin.profile')->middleware('verified');
+    Route::put('/{admin}', 'Admins\AdminController@update')->name('admin.update')->middleware('verified');
+    Route::put('/store/update', 'Admins\AdminController@profileUpdate')->name('admin.profile.update')->middleware('verified');
+    Route::get('/passwordChange', 'Admins\AdminController@changePassword')->name('admin.change.password')->middleware('verified');
+    Route::post('/resetPassword', 'Admins\AdminController@resetPassword')->name('admin.password.reset.request')->middleware('verified');
 });

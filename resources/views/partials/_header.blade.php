@@ -2,7 +2,7 @@
 			<nav class="navbar navbar-dark">
 				<div class="container">
 					<a class="navbar-brand" href="{{ url('/') }}">
-						<h5 class="text-white">Blog</h5>
+						<h5 class="text-white">mad-blog</h5>
 					</a>
 					<ul class="nav">
 						<li class="nav-item">
@@ -45,7 +45,7 @@
 											<i class="icon-key mr-2"></i> Change Password</a>
 									</li>
 									<li class="main pb-3">
-									<a href="{{ route('user.profile',Auth::user()->id) }}">
+									<a href="{{ route('user.profile') }}">
 											<i class="icon-user mr-2"></i> Profile</a>
 									</li>
 									<li class="main pb-3">
