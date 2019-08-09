@@ -1,6 +1,6 @@
 ## Laravel Complete Blog Project
 
-mad-blog is a multi-purpose blog script. It has clean, responsive and user-friendly design. You can manage your posts, custom pages, categories, user comments and contact messages with its powerful Admin panel.
+mad-blog is a multi-purpose blog script. It has clean, responsive and user-friendly design. You can manage your posts, categories, tags,author,user comments & reply,subscribers and notification messages with its powerful Admin panel.
 
 ##  All Features
 * Popular posts
@@ -27,25 +27,28 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * Responsive design
 * seo friendly
 * pro admin template
-##  Packages Used
+
+##  Laravel Packages Used
+
 * [laravel-toastr](https://github.com/brian2694/laravel-toastr)
 * [Sweet alert](https://github.com/uxweb/sweet-alert)
 * [laravel intervention image](http://image.intervention.io/)
 * [laravel filemanager](https://unisharp.github.io/laravel-filemanager/)
 * [laravel html purifier](https://github.com/mewebstudio/Purifier)
 * [laravel file manager](https://docs.spatie.be/laravel-medialibrary/v7/)
+
 ##  Installation Instruction
 
 * Clone the repo
 * Run `composer install`
 * Run `cp .env.example .env`
-* Run `php artisan migrate --seed`
+* Run `php artisan migrate`
 * run `php artisan key:generate`
 * Set your database credentials in your .env file
-* run `php artisan migrate`
 * run `php artisan db:seed --class=AdminsTableSeeder`
 * run `php artisan serve`
 * Set your mail configuration in your .env file
+* Set your application  in your config/app.php and .env file
 
 ## Contribution Guideline
 
@@ -57,10 +60,15 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * Push to remote
 * When work is tested,done or ready, push to remote
 * Merge to dev
+## Useful links
 
-## Admin panel
-
-[Imgur](https://i.imgur.com/YqMJ3JA.png)
+* [laravel-daily](https://laraveldaily.com/)
+* [laracast](https://laracasts.com/)
+* [laravel documentation](https://laravel.com/)
+* [laravel news](https://laravel-news.com/)
+* [laravel business](https://www.youtube.com/channel/UCTuplgOBi6tJIlesIboymGA)
+* [DevMarketer](https://www.youtube.com/channel/UC6kwT7-jjZHHF1s7vCfg2CA)
+* [Academind](https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w)
 
 ## License
 
