@@ -1,6 +1,7 @@
 ## Laravel Complete Blog Project
 
-mad-blog is a multi-purpose blog script. It has clean, responsive and user-friendly design. You can manage your posts, categories, tags,author,user comments & reply,subscribers and notification messages with its powerful Admin panel.
+This application based on new Latest Laravel 5.8 Framework that allows web site owners to quickly add blog post, manage users , manage comments, manage reply, manage profile and allow to create category and tag. 
+It is designed latest security and code standards and it is ready for high availability web sites.
 
 ##  All Features
 * Popular posts
@@ -42,9 +43,9 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * Clone the repo
 * Run `composer install`
 * Run `cp .env.example .env`
-* Run `php artisan migrate`
 * run `php artisan key:generate`
 * Set your database credentials in your .env file
+* Run `php artisan migrate`
 * run `php artisan db:seed --class=AdminsTableSeeder`
 * run `php artisan serve`
 * Set your mail configuration in your .env file
@@ -60,6 +61,7 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * Push to remote
 * When work is tested,done or ready, push to remote
 * Merge to dev
+
 ## Useful links
 
 * [laravel-daily](https://laraveldaily.com/)
@@ -69,7 +71,12 @@ mad-blog is a multi-purpose blog script. It has clean, responsive and user-frien
 * [laravel business](https://www.youtube.com/channel/UCTuplgOBi6tJIlesIboymGA)
 * [DevMarketer](https://www.youtube.com/channel/UC6kwT7-jjZHHF1s7vCfg2CA)
 * [Academind](https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w)
+## Demo
 
+[mad-blog demo](https://madcoderz.com/mad-blog)
+[Admin Login](https://madcoderz.com/mad-blog/admin/loginForm)
+## Admin
+![screencapture-localhost-8000-admin-dashboard-2019-08-09-12_36_51](https://user-images.githubusercontent.com/50723539/62766572-964cb580-bab4-11e9-8e3f-57b560b007ea.png)
 ## License
 
 madCoderz Blog is open sourced software licensed under the [MIT license](https://opensourse.org/licenses/MIT);
