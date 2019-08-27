@@ -16,7 +16,7 @@
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.14",
+        "lodash": "^4.17.15",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
@@ -27,6 +27,7 @@
     "dependencies": {
         "imagesloaded": "^4.1.4",
         "jquery-slimscroll": "^1.3.8",
+        "lodash.update": "^4.10.2",
         "metismenu": "^3.0.4",
         "owl.carousel": "^2.3.4",
         "select2": "^4.0.8",

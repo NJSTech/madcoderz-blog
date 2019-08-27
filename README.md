@@ -74,7 +74,7 @@ It is designed latest security and code standards and it is ready for high avail
 
 ## Demo
 
-###[mad-blog demo](https://madcoderz.com/mad-blog)
+### [mad-blog demo](https://madcoderz.com/mad-blog)
 ### [Admin Login](https://madcoderz.com/mad-blog/admin/loginForm)
 
 ## Admin
