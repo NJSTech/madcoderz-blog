@@ -15,8 +15,6 @@ use Toastr;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Subscriber;
-use App\Notifications\AdminEmailVerify;
-use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -29,7 +27,6 @@ class AdminController extends Controller
     {
         $this->middleware('auth:admin');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -85,7 +82,6 @@ class AdminController extends Controller
         $admin = Auth::guard('admin')->user();
         $admin->password = Hash::make($request->password);
         $admin->update();
-
         return redirect()->back()->with("status", "Password Changed Successfully !");
     }
     // admin create page
