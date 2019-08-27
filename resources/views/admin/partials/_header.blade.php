@@ -22,12 +22,7 @@
                         </a>
                     </li>
                     <li class="nav-item pt-0 d-none d-sm-block">
-                        <form role="search" class="app-search">
-                            <div class="form-group m-2 d-flex">
-                                <input type="text" class="form-control" placeholder="Search..">
-                                <button type="submit"><i class="icon-magnifier"></i></button>
-                            </div>
-                        </form>
+                        
                     </li>
                 </ul>
                 <ul class="navbar-nav d-flex flex-row nav-right pl-0 mb-0 m-20 order-2">

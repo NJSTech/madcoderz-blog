@@ -71,12 +71,16 @@ It is designed latest security and code standards and it is ready for high avail
 * [laravel business](https://www.youtube.com/channel/UCTuplgOBi6tJIlesIboymGA)
 * [DevMarketer](https://www.youtube.com/channel/UC6kwT7-jjZHHF1s7vCfg2CA)
 * [Academind](https://www.youtube.com/channel/UCSJbGtTlrDami-tDGPUV9-w)
+
 ## Demo
 
-[mad-blog demo](https://madcoderz.com/mad-blog)
-[Admin Login](https://madcoderz.com/mad-blog/admin/loginForm)
+###[mad-blog demo](https://madcoderz.com/mad-blog)
+### [Admin Login](https://madcoderz.com/mad-blog/admin/loginForm)
+
 ## Admin
 ![screencapture-localhost-8000-admin-dashboard-2019-08-09-12_36_51](https://user-images.githubusercontent.com/50723539/62766572-964cb580-bab4-11e9-8e3f-57b560b007ea.png)
+## Post Create
+![screencapture-localhost-8000-admin-posts-create-2019-08-09-12_37_34](https://user-images.githubusercontent.com/50723539/62770771-8a192600-babd-11e9-965b-1fc0d8563605.png)
 ## License
 
 madCoderz Blog is open sourced software licensed under the [MIT license](https://opensourse.org/licenses/MIT);

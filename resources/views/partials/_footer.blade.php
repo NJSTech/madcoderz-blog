@@ -6,7 +6,7 @@
 					<ul class="list-horizontal-dash">
 					<li><a href="{{ url('about-us') }}">About Us</a></li><li><a href="{{ url('about-us') }}">Contact Us</a></li><li><a href="{{ route('posts.home.index') }}">Blogs</a></li>
 					</ul>
-					<p class="margin-top-10">&copy; {{ date('Y') }} MadCoderz, All Rights Reserved.</p>
+					<p class="margin-top-10 text-white">&copy; {{ date('Y') }} MadCoderz, All Rights Reserved.</p>
 				</div>
 				<div class="col-12 col-md-6 text-center text-md-right">
 					<ul class="list-horizontal-unstyled">
