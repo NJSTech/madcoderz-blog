@@ -40,7 +40,7 @@ class AdminController extends Controller
         $posts = Post::all();
         $users = User::all();
         $subscribers = Subscriber::all();
-        return view('admin.dashboard', compact('posts', 'users', 'categories', 'subscribers'));
+        return view('admin.dashboard', compact('posts', 'users', 'subscribers'));
     }
     public function edit(Admin $admin)
     {
